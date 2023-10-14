@@ -1,0 +1,261 @@
+body {
+  overflow: hidden;
+  margin: 0;
+}
+
+.background {
+  position: fixed;
+  z-index: -5;
+  width: 100%;
+  height: 100%;
+  /* these will reset other properties, like background-position, but it does know what you mean */
+  background: #ffffff;
+}
+
+.icon {
+  position: absolute;
+  z-index: 1;
+  height: 40%;
+  top: 25%;
+  left: 25%;
+  transform: translate(-50%, -50%);
+}
+
+.accent-icon {
+  position: fixed;
+  z-index: -1;
+  top: 0%;
+  left: 0%;
+}
+
+.accent-select {
+  position: fixed;
+  z-index: -3;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.genesis-select-accent {
+  fill:#ffffff;
+  animation: draw 0.9s, whiteToBlack 0.5s 0.8s forwards;
+}
+
+.exit-animation-select-accent {
+  fill:#000000;
+  transform: translate(-50%, -50%) scale(20);
+  animation: contractToNormal 2s forwards;
+  animation-delay: 0.5s;
+  
+}
+
+@keyframes contractToNormal {
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+
+
+.expand {
+  fill:#000000;
+  animation: expandAnimation 1s forwards;
+  animation-delay: 0.65s;
+  
+}
+
+
+
+.fill-white {
+  fill:#000000;
+  animation: blackToWhite 1s forwards;
+  animation-delay: 0.65s;
+}
+
+@keyframes blackToWhite {
+  100% {
+    fill: #ffffff;
+  }
+}
+
+
+.click-contract {
+  animation: contractAnimation 0.15s;
+}
+
+@keyframes contractAnimation {
+  50% {
+    transform: translate(-50%, -50%) scale(0.7);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+}
+
+@keyframes contractToNormal {
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+
+@keyframes expandAnimation {
+  100% {
+    transform: translate(-50%, -50%) scale(20);
+  }
+}
+
+@keyframes whiteToBlack {
+  0% {
+    fill: #ffffff;
+  }
+  100% {
+    fill: #000000;
+  }
+}
+
+@keyframes blackToGrey {
+  0% {
+    fill: #000000;
+  }
+  100% {
+    fill: #7D7D7D;
+  }
+}
+
+
+
+
+.select-resources {
+  position: absolute;
+  top: 50%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+  height: 55%;
+}
+
+.select-about {
+  position: absolute;
+  top: 50%;
+  left: 70%;
+  transform: translate(-50%, -50%);
+  height: 60%;
+}
+
+.clicked {
+  animation: contractAnimation 0.15s, erase 0.5s 0.15s forwards;
+}
+
+
+.detail {
+  position: fixed;
+  z-index: 1;
+  fill: none;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: draw 1s forwards, blackToGrey 0.5s 1s forwards;
+}
+
+.filter:hover {
+  filter: invert(21%) sepia(8%) saturate(3227%) hue-rotate(95deg) brightness(92%) contrast(85%);
+}
+
+.fade-display {
+  animation: fadeIn 3s;
+}
+
+.fade-hide {
+  animation: fadeOut 0.5s forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.animate-erase {
+  animation: erase 0.5s 0.15s forwards;
+}
+
+.animate-draw {
+  animation: draw 0.75s forwards;
+}
+
+
+
+@keyframes erase {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: 1;
+  }
+}
+
+@keyframes draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+
+.select-exit {
+  position: fixed;
+  z-index: 1;
+  width: 10%;
+  top: 80%;
+  left: 80%;
+  transform: translate(-50%, -50%);
+}
+
+
+.genesis-exit {
+  opacity: 0;
+  animation: fadeIn 0.01s 1.1s forwards, draw 0.2s 1.11s, exitGenesisRotate 0.2s 1.31s forwards;
+}
+
+
+.click-exit-animate {
+  rotate: 135deg;
+  animation: contractAnimation 0.2s, exitClickRotate 0.2s 0.2s forwards, erase 0.2s 0.4s forwards;
+}
+
+@keyframes draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes exitGenesisRotate {
+  100% {
+    transform: translate(-50%, -50%) rotate(135deg);
+  }
+}
+
+@keyframes exitClickRotate {
+  100% {
+    transform: translate(-50%, -50%) rotate(-135deg);
+  }
+}
