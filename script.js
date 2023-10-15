@@ -246,7 +246,7 @@ function library(type) {
                     [
                         {
                             key: "d",
-                            value: "M 150,250 A 100,100 0 0,1 150,50 L 650 50"
+                            value: "M 150,250 A 100,100 0 0,1 150,50 L 651 50"
                         },
                         { key: "pathLength", value: 1 },
                         { key: "id", value: "path_one" },
@@ -377,8 +377,8 @@ function library(type) {
             event: {
                 click_about: { classes: { add: ["select-exit","genesis-select-exit","filter"] } },
                 click_resources: { classes: { add: ["select-exit","genesis-select-exit","filter"] } },
-                click_exit_click_about: { classes: { add: ["click-exit-animate"], remove: ["genesis-select-exit"] } },
-                click_exit_click_resources: { classes: { add: ["click-exit-animate"], remove: ["genesis-select-exit"] } },
+                click_exit_click_about: { classes: { add: ["click-select-exit"], remove: ["genesis-select-exit"] } },
+                click_exit_click_resources: { classes: { add: ["click-select-exit"], remove: ["genesis-select-exit"] } },
                 generate_select_about: { classes: { add: ["none"], } },
                 generate_select_resources: { classes: { add: ["none"], } },
             },
@@ -512,9 +512,6 @@ function library(type) {
     else{
         return list.filter(obj => obj["event"] && obj["event"].hasOwnProperty(ENV.event));
     }
-
-
-    return list.filter(obj => obj["event"] && obj["event"].hasOwnProperty(ENV.event));
 
     // switch "hasOwnProperty" for "includes" for an array sort value - like: return array.filter(obj => obj[filter_key] && obj[filter_key].includes(filter_value));
     // simple filter: return arr.filter(obj => obj[key] === value);

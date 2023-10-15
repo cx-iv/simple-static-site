@@ -49,16 +49,27 @@ body {
   }
 }
 
-.genesis-select-exit {
-  opacity: 0;
-  animation: fadeIn 0.01s 1.1s forwards, draw 0.2s 1.11s, rotateGenesisSelectExit 0.2s 1.31s forwards;
-}
-
 .select-exit {
   position: fixed;
   z-index: 1;
   right: 10%;
   bottom: 10%;
+}
+
+.genesis-select-exit {
+  stroke-dashoffset: 1;
+  animation: draw 0.3s 1.1s forwards, rotateGenesisSelectExit 0.3s 1.3s forwards;
+}
+
+.click-select-exit {
+  transform: rotate(135deg);
+  animation: clickedContractionNoTransform 0.2s, exitClickRotate 0.3s 0.2s forwards, erase 0.3s 0.5s forwards;  
+}
+
+@keyframes exitClickRotate {
+  100% {
+    transform: rotate(-90deg);
+  }
 }
 
 
@@ -123,21 +134,6 @@ body {
 }
 
 
-.click-exit-animate {
-  transform: rotate(135deg);
-  
-  animation: clickedContractionNoTransform 0.2s, exitClickRotate 0.2s 0.2s forwards, erase 0.2s 0.4s forwards;
-  
-}
-
-@keyframes exitClickRotate {
-  0% {
-    transform: rotate(0deg);
-  }  
-  100% {
-    transform: rotate(-90deg);
-  }
-}
 
 
 .exit-animation-select-accent {
@@ -153,11 +149,6 @@ body {
     transform: translate(-50%, -50%) scale(1);
   }
 }
-
-
-
-
-
 
 .fill-white {
   fill:#000000;
