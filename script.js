@@ -8,7 +8,7 @@
 */
 
 console.log("HEY!!!")
-console.log("please steal, feedback welcome: linkedin.com/in/cxiv/")
+console.log("please steal, feedback welcome: github.com/cx-iv/simple-static-site")
 
 var ENV = {
     event: "NULL_ON_LOAD",
@@ -32,11 +32,11 @@ document.addEventListener('DOMContentLoaded', (event) => { event_handler("genesi
 
 //captures animation events
 document.addEventListener("animationend", (event) => {
-    if (event.animationName === "exitGenesisRotate" && ENV.event === "click_about") {
+    if (event.animationName === "rotateGenesisSelectExit" && ENV.event === "click_about") {
         console.log("THE X JUST OPENED FOR ABOUT");
         event_handler("generate_about")
     }
-    else if (event.animationName === "exitGenesisRotate" && ENV.event === "click_resources") {
+    else if (event.animationName === "rotateGenesisSelectExit" && ENV.event === "click_resources") {
         console.log("THE X JUST OPENED FOR RESOURCES");
         event_handler("generate_resources")
     }
@@ -157,13 +157,12 @@ function library() {
 //the order of componenets matters here - parents must come first
     var list = [
         {
-            title: "accent_diopside",
+            title: "accent_app",
+            notes:"this is for the diopside app",
             parent: "none",
             size: { tall: 5 / 10, wide: 3 / 10 },
             event: {
                 genesis: { classes: { add: ["accent-icon"] }, },
-                click_about: { classes: { add: ["none"] }, },
-                click_resources: { classes: { add: ["none"] }, },
             },
             attributes: {
                 svg: [
@@ -181,8 +180,8 @@ function library() {
             },
         },
         {
-            title: "diopside",
-            parent: "accent_diopside",
+            title: "app",
+            parent: "accent_app",
             size: { tall: 1.5 / 10, wide: 2 / 10 },
             event: {
                 genesis: { classes: { add: ["icon"] } },
@@ -214,11 +213,11 @@ function library() {
             parent: "none",
             size: { tall: 9 / 10, wide: 7 / 10 },
             event: {
-                genesis: { classes: { add: ["accent-select", "genesis-select-accent"], }, },
-                click_about: { classes: { add: ["expand"], remove: ["exit-animation-select-accent"]} },
-                click_resources: { classes: { add: ["expand"], remove: ["exit-animation-select-accent"]} },
-                click_exit_click_about: { classes: { add: ["exit-animation-select-accent"],remove: ["genesis-select-accent","expand",], } },
-                click_exit_click_resources: { classes: { add: ["exit-animation-select-accent"],remove: ["genesis-select-accent","expand"], } },
+                genesis: { classes: { add: ["accent-select", "genesis-accent-select"], }, },
+                click_about: { classes: { add: ["expand-fill-page"], remove: ["exit-animation-select-accent"]} },
+                click_resources: { classes: { add: ["expand-fill-page"], remove: ["exit-animation-select-accent"]} },
+                click_exit_click_about: { classes: { add: ["exit-animation-select-accent"],remove: ["genesis-select-accent","expand-fill-page",], } },
+                click_exit_click_resources: { classes: { add: ["exit-animation-select-accent"],remove: ["genesis-select-accent","expand-fill-page"], } },
             },
             attributes: {
                 svg: [
@@ -259,7 +258,7 @@ function library() {
             event: {
                 genesis: { classes: { add: ["select-resources", "filter"], } },
                 click_about: { classes: { add: ["animate-erase"],remove: ["animate-draw"] } },
-                click_resources: { classes: { add: ["clicked"],remove: ["animate-draw"] } },
+                click_resources: { classes: { add: ["animate-clicked",],remove: ["animate-draw"] } },
                 generate_resources: { classes: { add: ["none"], remove: true, } },
                 generate_about: { classes: { add: ["none"], remove: true, } },
                 generate_select_about: { classes: { add: ["select-resources","animate-draw","filter"], } },
@@ -301,8 +300,8 @@ function library() {
             parent: "accent_select",
             size: "ABSOLUTE_DRIVEN_BY_PARENT",
             event: {
-                genesis: { classes: { add: ["select-about","fill-white","filter"], } },
-                click_about: { classes: { add: ["clicked"],remove: ["animate-draw"] } },
+                genesis: { classes: { add: ["select-about","filter"], } },
+                click_about: { classes: { add: ["animate-clicked"],remove: ["animate-draw"] } },
                 click_resources: { classes: { add: ["animate-erase"],remove: ["animate-draw"] } },
                 generate_resources: { classes: { add: ["none"] } },
                 generate_about: { classes: { add: ["none"] } },
@@ -363,12 +362,12 @@ function library() {
         {
             title: "exit",
             parent: "none",
-            size: { tall: 1 / 10, wide: 1 / 10 },
+            size: { tall: 2 / 10, wide: 1.5 / 10 },
             event: {
-                click_about: { classes: { add: ["select-exit","genesis-exit","filter"] } },
-                click_resources: { classes: { add: ["select-exit","genesis-exit","filter"] } },
-                click_exit_click_about: { classes: { add: ["click-exit-animate"], remove: ["genesis-exit"] } },
-                click_exit_click_resources: { classes: { add: ["click-exit-animate"], remove: ["genesis-exit"] } },
+                click_about: { classes: { add: ["select-exit","genesis-select-exit","filter"] } },
+                click_resources: { classes: { add: ["select-exit","genesis-select-exit","filter"] } },
+                click_exit_click_about: { classes: { add: ["click-exit-animate"], remove: ["genesis-select-exit"] } },
+                click_exit_click_resources: { classes: { add: ["click-exit-animate"], remove: ["genesis-select-exit"] } },
                 generate_select_about: { classes: { add: ["none"], } },
                 generate_select_resources: { classes: { add: ["none"], } },
             },
@@ -383,7 +382,7 @@ function library() {
                 ],
                 g: [
                     { key: "stroke", value: "#ffffff" },
-                    { key: "stroke-width", value: "60" },
+                    { key: "stroke-width", value: "150" },
                     { key: "fill", value: "none" },
                     { key: "stroke-dasharray", value: 1 },
                 ],
@@ -428,16 +427,16 @@ function library() {
                     { key: "stroke-width", value: "15" },
                     { key: "stroke-dasharray", value: 1 },
                 ],
-                paths: [
-                    [
-                        {
-                            key: "d",
-                            value: "m1081.2 898.56c-14.797-10.953-28.074-23.824-39.48-38.277-27.84-32.281-59.398-68.281-122.52-68.281-63.121 0-94.68 36-122.52 68.281-25.199 28.918-45.121 51.719-86.281 51.719-41.16 0-61.199-22.801-86.398-51.719-27.84-32.281-59.398-68.281-122.52-68.281-63.121 0-94.68 36-122.52 68.281-25.082 28.918-45 51.719-86.281 51.719s-61.078-22.801-86.281-51.719c-17.258-22.672-39.035-41.512-63.957-55.32-7.6562-3.4727-16.566-2.6875-23.496 2.0664-6.9297 4.7539-10.867 12.785-10.383 21.176 0.48828 8.3906 5.3242 15.914 12.758 19.836 19.004 11.191 35.605 26.039 48.84 43.68 27.961 32.281 59.52 68.281 122.52 68.281s94.68-36 122.52-68.281c25.199-28.918 45.121-51.719 86.281-51.719 41.16 0 61.078 22.801 86.281 51.719 27.84 32.281 59.398 68.281 122.64 68.281 63.238 0 94.68-36 122.52-68.281 25.082-28.918 45.004-51.719 86.281-51.719 41.281 0 61.199 22.801 86.281 51.719 14.188 17.848 30.789 33.641 49.32 46.922 5.3125 3.6289 11.859 4.9688 18.172 3.7266 6.3164-1.2461 11.863-4.9727 15.402-10.348 3.5391-5.3711 4.7734-11.941 3.4258-18.234-1.3516-6.2891-5.168-11.777-10.602-15.227z"
-                        },
-                        { key: "pathLength", value: 1 },
-                        { key: "id", value: "path_one" },
-                    ],
-                ],
+                // paths: [
+                //     [
+                //         {
+                //             key: "d",
+                //             value: "m1081.2 898.56c-14.797-10.953-28.074-23.824-39.48-38.277-27.84-32.281-59.398-68.281-122.52-68.281-63.121 0-94.68 36-122.52 68.281-25.199 28.918-45.121 51.719-86.281 51.719-41.16 0-61.199-22.801-86.398-51.719-27.84-32.281-59.398-68.281-122.52-68.281-63.121 0-94.68 36-122.52 68.281-25.082 28.918-45 51.719-86.281 51.719s-61.078-22.801-86.281-51.719c-17.258-22.672-39.035-41.512-63.957-55.32-7.6562-3.4727-16.566-2.6875-23.496 2.0664-6.9297 4.7539-10.867 12.785-10.383 21.176 0.48828 8.3906 5.3242 15.914 12.758 19.836 19.004 11.191 35.605 26.039 48.84 43.68 27.961 32.281 59.52 68.281 122.52 68.281s94.68-36 122.52-68.281c25.199-28.918 45.121-51.719 86.281-51.719 41.16 0 61.078 22.801 86.281 51.719 27.84 32.281 59.398 68.281 122.64 68.281 63.238 0 94.68-36 122.52-68.281 25.082-28.918 45.004-51.719 86.281-51.719 41.281 0 61.199 22.801 86.281 51.719 14.188 17.848 30.789 33.641 49.32 46.922 5.3125 3.6289 11.859 4.9688 18.172 3.7266 6.3164-1.2461 11.863-4.9727 15.402-10.348 3.5391-5.3711 4.7734-11.941 3.4258-18.234-1.3516-6.2891-5.168-11.777-10.602-15.227z"
+                //         },
+                //         { key: "pathLength", value: 1 },
+                //         { key: "id", value: "path_one" },
+                //     ],
+                // ],
                 text: [
                     [
                         { key: "x", value: "50" },
@@ -472,16 +471,16 @@ function library() {
                     { key: "stroke-dasharray", value: 1 },
                     { key: "transform", value: "rotate(270,800,800)" },
                 ],
-                paths: [
-                    [
-                        {
-                            key: "d",
-                            value: "m852.68 546.56c-2.3242-0.97656-57.148-23.852-124.01-23.852-49.5 0-93.148 12.227-129.71 36.336-21.148 13.949-38.176 30.789-52.051 48.938 3.2266-122.36 34.613-245.7 118.73-346.57 3.3008 24.336 12.824 51.863 37.688 73.426 56.625 49.199 134.1 17.176 134.1 17.176s20.887-81.227-35.738-130.39c-21.375-18.562-45.676-25.539-67.688-27.039 21.824-17.625 45.523-34.312 72.148-49.539 17.961-10.273 24.227-33.188 13.949-51.148-10.238-17.961-33.148-24.227-51.148-13.949-108.75 62.137-180.64 142.57-226.65 231.49-11.926-29.438-29.773-58.539-57-82.914-42.68-38.137-101.63-58.273-170.41-58.273-44.176 0-77.398 8.4766-78.789 8.8125-14.66 3.75-25.609 16.012-27.711 31.012-0.89844 6.2617-20.812 154.73 76.875 242.1 42.637 38.176 101.55 58.312 170.32 58.312 8.7734 0 16.949-0.375 24.676-0.9375-14.852 103.12-7.8359 208.16 8.7734 303.75-62.809-30.488-127.84 11.699-127.84 11.699s-5.0234 83.699 59.926 121.2c36.148 20.852 73.426 15.676 99.75 7.0859 37.012 131.81 81.75 223.31 83.062 225.98 6.6016 13.164 19.836 20.738 33.602 20.738 5.625 0 11.363-1.2734 16.727-3.9375 18.523-9.2617 26.023-31.801 16.762-50.324-1.5391-3.0742-65.961-134.89-101.55-306.6 18.938 3.7891 41.062 6.7109 64.914 6.7109 49.5 0 93.148-12.227 129.75-36.375 109.39-72.148 111.41-221.89 111.45-228.23 0.074218-15.109-9.0039-28.797-22.914-34.684zm-517.43-150.34c-47.438-42.414-54.262-111.38-54.074-149.02 9.4883-1.0898 21-1.9531 33.711-1.9531 34.914 0 84.113 6.7891 120.38 39.188 47.398 42.414 54.262 111.38 54.074 149.02-9.4883 1.125-21.039 1.9883-33.711 1.9883-34.914 0-84.148-6.7852-120.38-39.223zm387.56 350.66c-24.113 15.898-53.887 24-88.426 24-27.074 0-51.938-4.9883-69.449-9.7109 5.3633-37.312 22.199-104.48 75.301-139.5 24.148-15.898 53.887-23.961 88.426-23.961 27.074 0 51.977 4.9883 69.449 9.7109-5.3242 37.273-22.199 104.44-75.301 139.46z"
-                        },
-                        { key: "pathLength", value: 1 },
-                        { key: "id", value: "path_one" },
-                    ],
-                ],
+                // paths: [
+                //     [
+                //         {
+                //             key: "d",
+                //             value: "m852.68 546.56c-2.3242-0.97656-57.148-23.852-124.01-23.852-49.5 0-93.148 12.227-129.71 36.336-21.148 13.949-38.176 30.789-52.051 48.938 3.2266-122.36 34.613-245.7 118.73-346.57 3.3008 24.336 12.824 51.863 37.688 73.426 56.625 49.199 134.1 17.176 134.1 17.176s20.887-81.227-35.738-130.39c-21.375-18.562-45.676-25.539-67.688-27.039 21.824-17.625 45.523-34.312 72.148-49.539 17.961-10.273 24.227-33.188 13.949-51.148-10.238-17.961-33.148-24.227-51.148-13.949-108.75 62.137-180.64 142.57-226.65 231.49-11.926-29.438-29.773-58.539-57-82.914-42.68-38.137-101.63-58.273-170.41-58.273-44.176 0-77.398 8.4766-78.789 8.8125-14.66 3.75-25.609 16.012-27.711 31.012-0.89844 6.2617-20.812 154.73 76.875 242.1 42.637 38.176 101.55 58.312 170.32 58.312 8.7734 0 16.949-0.375 24.676-0.9375-14.852 103.12-7.8359 208.16 8.7734 303.75-62.809-30.488-127.84 11.699-127.84 11.699s-5.0234 83.699 59.926 121.2c36.148 20.852 73.426 15.676 99.75 7.0859 37.012 131.81 81.75 223.31 83.062 225.98 6.6016 13.164 19.836 20.738 33.602 20.738 5.625 0 11.363-1.2734 16.727-3.9375 18.523-9.2617 26.023-31.801 16.762-50.324-1.5391-3.0742-65.961-134.89-101.55-306.6 18.938 3.7891 41.062 6.7109 64.914 6.7109 49.5 0 93.148-12.227 129.75-36.375 109.39-72.148 111.41-221.89 111.45-228.23 0.074218-15.109-9.0039-28.797-22.914-34.684zm-517.43-150.34c-47.438-42.414-54.262-111.38-54.074-149.02 9.4883-1.0898 21-1.9531 33.711-1.9531 34.914 0 84.113 6.7891 120.38 39.188 47.398 42.414 54.262 111.38 54.074 149.02-9.4883 1.125-21.039 1.9883-33.711 1.9883-34.914 0-84.148-6.7852-120.38-39.223zm387.56 350.66c-24.113 15.898-53.887 24-88.426 24-27.074 0-51.938-4.9883-69.449-9.7109 5.3633-37.312 22.199-104.48 75.301-139.5 24.148-15.898 53.887-23.961 88.426-23.961 27.074 0 51.977 4.9883 69.449 9.7109-5.3242 37.273-22.199 104.44-75.301 139.46z"
+                //         },
+                //         { key: "pathLength", value: 1 },
+                //         { key: "id", value: "path_one" },
+                //     ],
+                // ],
                 text: [
                     [
                         { key: "x", value: "50" },

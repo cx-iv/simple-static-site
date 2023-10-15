@@ -8,7 +8,6 @@ body {
   z-index: -5;
   width: 100%;
   height: 100%;
-  /* these will reset other properties, like background-position, but it does know what you mean */
   background: #ffffff;
 }
 
@@ -36,18 +35,119 @@ body {
   transform: translate(-50%, -50%);
 }
 
-.genesis-select-accent {
+.genesis-accent-select {
   fill:#ffffff;
-  animation: draw 0.9s, whiteToBlack 0.5s 0.8s forwards;
+  animation: draw 0.9s, fillWhiteToBlack 0.5s 0.8s forwards;
 }
+
+@keyframes fillWhiteToBlack {
+  0% {
+    fill: #ffffff;
+  }
+  100% {
+    fill: #000000;
+  }
+}
+
+.genesis-select-exit {
+  opacity: 0;
+  animation: fadeIn 0.01s 1.1s forwards, draw 0.2s 1.11s, rotateGenesisSelectExit 0.2s 1.31s forwards;
+}
+
+.select-exit {
+  position: fixed;
+  z-index: 1;
+  width: 10%;
+  right: 10%;
+  bottom: 10%;
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes rotateGenesisSelectExit {
+  100% {
+    transform: rotate(135deg);
+  }
+}
+
+.expand-fill-page {
+  fill:#000000;
+  animation: expandFillPage 1s forwards;
+  animation-delay: 0.65s;
+}
+
+@keyframes expandFillPage {
+  100% {
+    transform: translate(-50%, -50%) scale(20);
+  }
+}
+
+.animate-clicked {
+  animation: clickedContraction 0.15s, erase 0.5s 0.15s forwards;
+}
+
+@keyframes clickedContraction {
+  50% {
+    transform: translate(-50%, -50%) scale(0.7);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+}
+
+@keyframes clickedContractionNoTransform {
+  50% {
+    transform: rotate(135deg) scale(0.7);
+  }
+  100% {
+    transform: rotate(135deg) scale(1);
+  }
+
+}
+
+
+.click-exit-animate {
+  transform: rotate(135deg);
+  
+  animation: clickedContractionNoTransform 0.2s, exitClickRotate 0.2s 0.2s forwards, erase 0.2s 0.4s forwards;
+  
+}
+
+@keyframes exitClickRotate {
+  0% {
+    transform: rotate(0deg);
+  }  
+  100% {
+    transform: rotate(-90deg);
+  }
+}
+
 
 .exit-animation-select-accent {
   fill:#000000;
   transform: translate(-50%, -50%) scale(20);
   animation: contractToNormal 2s forwards;
   animation-delay: 0.5s;
-  
 }
+
 
 @keyframes contractToNormal {
   100% {
@@ -57,12 +157,6 @@ body {
 
 
 
-.expand {
-  fill:#000000;
-  animation: expandAnimation 1s forwards;
-  animation-delay: 0.65s;
-  
-}
 
 
 
@@ -83,15 +177,6 @@ body {
   animation: contractAnimation 0.15s;
 }
 
-@keyframes contractAnimation {
-  50% {
-    transform: translate(-50%, -50%) scale(0.7);
-  }
-  100% {
-    transform: translate(-50%, -50%) scale(1);
-  }
-
-}
 
 @keyframes contractToNormal {
   100% {
@@ -99,21 +184,6 @@ body {
   }
 }
 
-
-@keyframes expandAnimation {
-  100% {
-    transform: translate(-50%, -50%) scale(20);
-  }
-}
-
-@keyframes whiteToBlack {
-  0% {
-    fill: #ffffff;
-  }
-  100% {
-    fill: #000000;
-  }
-}
 
 @keyframes blackToGrey {
   0% {
@@ -143,9 +213,6 @@ body {
   height: 60%;
 }
 
-.clicked {
-  animation: contractAnimation 0.15s, erase 0.5s 0.15s forwards;
-}
 
 
 .detail {
@@ -218,44 +285,5 @@ body {
 }
 
 
-.select-exit {
-  position: fixed;
-  z-index: 1;
-  width: 10%;
-  top: 80%;
-  left: 80%;
-  transform: translate(-50%, -50%);
-}
 
 
-.genesis-exit {
-  opacity: 0;
-  animation: fadeIn 0.01s 1.1s forwards, draw 0.2s 1.11s, exitGenesisRotate 0.2s 1.31s forwards;
-}
-
-
-.click-exit-animate {
-  rotate: 135deg;
-  animation: contractAnimation 0.2s, exitClickRotate 0.2s 0.2s forwards, erase 0.2s 0.4s forwards;
-}
-
-@keyframes draw {
-  from {
-    stroke-dashoffset: 1;
-  }
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-
-@keyframes exitGenesisRotate {
-  100% {
-    transform: translate(-50%, -50%) rotate(135deg);
-  }
-}
-
-@keyframes exitClickRotate {
-  100% {
-    transform: translate(-50%, -50%) rotate(-135deg);
-  }
-}
