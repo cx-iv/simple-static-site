@@ -24,6 +24,9 @@ var ENV = {
         click_exit_click_about: "css",
         generate_select_about: "dom",
         generate_select_resources: "dom",
+        background_black: "css",
+        background_white: "css",
+        remove_ghost_accent: "dom",
     },
 };
 
@@ -33,21 +36,24 @@ document.addEventListener('DOMContentLoaded', (event) => { event_handler("genesi
 //captures animation events
 document.addEventListener("animationend", (event) => {
     if (event.animationName === "rotateGenesisSelectExit" && ENV.event === "click_about") {
-        console.log("THE X JUST OPENED FOR ABOUT");
-        event_handler("generate_about")
+        event_handler("background_black");
+        event_handler("generate_about");
     }
     else if (event.animationName === "rotateGenesisSelectExit" && ENV.event === "click_resources") {
-        console.log("THE X JUST OPENED FOR RESOURCES");
-        event_handler("generate_resources")
+        event_handler("background_black");
+        event_handler("generate_resources");
     }
-    else if (event.animationName === "contractToNormal" && ENV.event === "click_exit_click_resources") {
-        console.log(ENV.event);
+    else if (event.animationName === "eraseClickSelectExit" && ENV.event === "click_exit_click_resources") {
         event_handler("generate_select_resources")
     }
-    else if (event.animationName === "contractToNormal" && ENV.event === "click_exit_click_about") {
-        console.log(ENV.event);
+    else if (event.animationName === "eraseClickSelectExit" && ENV.event === "click_exit_click_about") {
         event_handler("generate_select_about")
     }
+    else if (event.animationName === "expandFillPageGhost") {
+        event_handler("background_white");
+        event_handler("remove_ghost_accent");
+    }
+
 });
 
 window.onresize = dimension_update;
@@ -71,7 +77,7 @@ function event_handler(event) {
     console.log("LIST_GENERATE")
     console.log(list_generate)
 
-    list_existing_elements = joins("components_on_dom", { array_base: components_lib_event, array_delete: list_generate, key_value: "title" });
+    list_existing_elements = joins("overlap", { array_base: components_lib_event, array_dom: list_dom, key_value: "title" });
     console.log("LIST_list_existing_elements")
     console.log(list_existing_elements)
 
@@ -107,8 +113,10 @@ function event_handler(event) {
     else if (ENV.type[event] === "dom") {
         //REMOVE COMPONENTS
         console.log("REMOVE COMPONENTS")
+        console.log(list_existing_elements)
         for (let i = 0; i < length_list_existing_elements; i++) {
-            console.log("REMOVE COMPONENTS")
+            console.log("COMPONENT-TO-BE-REMOVED")
+            console.log(list_existing_elements[i])
             document.getElementById(list_existing_elements[i].title).remove();
         }
     }
@@ -134,13 +142,18 @@ function dimension_update() {
     var list_dom = Array.from(document.querySelectorAll('div[id]')).map(div => ({ title: div.id }))
     //FILTER OUT ONLY OBJECTS ON DOM
     components = joins("overlap", { array_base: components, array_dom: list_dom, key_value: "title" });
-    //FILTER OUT CHILD COMMPONENTS - size determiend by parents
 
+    //FILTER OUT CHILD COMMPONENTS - size determiend by parents
     components = components.filter(obj => obj["parent"] === "none");
+    //FILTER OUT static size components like "background"
+    components = components.filter(obj => obj.hasOwnProperty("size"));
+
     length_components = components.length;
     console.log("COMPONENTS IN DIMENSION_UPDATE")
     console.log(components)
+
     for (let i = 0; i < length_components; i++) {
+
         if (h > w) {
             shape = "tall";
             item_size = w * components[i].size[shape]
@@ -150,6 +163,8 @@ function dimension_update() {
             item_size = h * components[i].size[shape]
         }
         document.getElementById(components[i].title).style.width = item_size + "px";
+
+
     }
 };
 
@@ -160,11 +175,12 @@ function library(type) {
     var list = [
         {
             title: "background",
-            notes:"",
-            size: { tall: 10 / 10, wide: 10 / 10 },
+            notes:"size is not dynamic and just set to 100% by the 'background' CSS property",
             parent: "none",
             event: {
-                genesis: { classes: { add: ["background"] }, },
+                genesis: { classes: { add: ["background","background-white"] }, },
+                background_black: { classes: { add: ["background-black"], remove: ["background-white"]  } },
+                background_white: { classes: { add: ["background-white"], remove: ["background-black"]  } },
             },
         },
         {
@@ -227,8 +243,10 @@ function library(type) {
                 genesis: { classes: { add: ["accent-select", "genesis-accent-select"], }, },
                 click_about: { classes: { add: ["expand-fill-page"], remove: ["exit-animation-select-accent"]} },
                 click_resources: { classes: { add: ["expand-fill-page"], remove: ["exit-animation-select-accent"]} },
-                click_exit_click_about: { classes: { add: ["exit-animation-select-accent"],remove: ["genesis-select-accent","expand-fill-page",], } },
-                click_exit_click_resources: { classes: { add: ["exit-animation-select-accent"],remove: ["genesis-select-accent","expand-fill-page"], } },
+                generate_about: { classes: { add: ["none"], }, },
+                generate_resources: { classes: { add: ["none"], }, },
+                generate_select_about: { classes: { add: ["accent-select-post-exit"], }, },
+                generate_select_resources: { classes: { add: ["accent-select-post-exit"], }, },
             },
             attributes: {
                 svg: [
@@ -263,6 +281,48 @@ function library(type) {
             }
         },
         {
+            title: "ghost_accent_select",
+            parent: "none",
+            size: { tall: 9 / 10, wide: 7 / 10 },
+            event: {
+                generate_select_about: { classes: { add: ["genesis-ghost-accent-select"], }, },
+                generate_select_resources: { classes: { add: ["genesis-ghost-accent-select"], }, },
+                remove_ghost_accent: { classes: { add: ["none"], }, },
+            },
+            attributes: {
+                svg: [
+                    { key: "width", value: "100%" },
+                    { key: "height", value: "100%" },
+                    { key: "version", value: "1.1" },
+                    { key: "viewBox", value: "0 0 800 300" },
+                ],
+                g: [
+                    { key: "stroke", value: "#ffffff" },
+                    { key: "fill", value: "#ffffff" },
+                    { key: "stroke-width", value: "45" },
+                    { key: "stroke-dasharray", value: 1 },
+                ],
+                paths: [
+                    [
+                        {
+                            key: "d",
+                            value: "M 150,250 A 100,100 0 0,1 150,50 L 652 50"
+                        },
+                        { key: "pathLength", value: 1 },
+                        { key: "id", value: "path_one" },
+                    ],
+                    [
+                        {
+                            key: "d",
+                            value: "M 650,50 A 100,100 0 0,1 650,250 L 148 250"
+                        },
+                        { key: "pathLength", value: 1 },
+                        { key: "id", value: "path_two" },
+                    ],
+                ],
+            }
+        },
+        {
             title: "resources",
             parent: "accent_select",
             size: "ABSOLUTE_DRIVEN_BY_PARENT",
@@ -270,8 +330,6 @@ function library(type) {
                 genesis: { classes: { add: ["select-resources", "filter"], } },
                 click_about: { classes: { add: ["animate-erase"],remove: ["animate-draw"] } },
                 click_resources: { classes: { add: ["animate-clicked",],remove: ["animate-draw"] } },
-                generate_resources: { classes: { add: ["none"], remove: true, } },
-                generate_about: { classes: { add: ["none"], remove: true, } },
                 generate_select_about: { classes: { add: ["select-resources","animate-draw","filter"], } },
                 generate_select_resources: { classes: { add: ["select-resources","animate-draw","filter"], } },
             },
@@ -314,8 +372,6 @@ function library(type) {
                 genesis: { classes: { add: ["select-about","filter"], } },
                 click_about: { classes: { add: ["animate-clicked"],remove: ["animate-draw"] } },
                 click_resources: { classes: { add: ["animate-erase"],remove: ["animate-draw"] } },
-                generate_resources: { classes: { add: ["none"] } },
-                generate_about: { classes: { add: ["none"] } },
                 generate_select_about: { classes: { add: ["select-about","animate-draw","filter"], } },
                 generate_select_resources: { classes: { add: ["select-about","animate-draw","filter"], } },
             },
