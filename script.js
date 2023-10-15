@@ -129,12 +129,13 @@ function event_handler(event) {
 function dimension_update() {
     var w = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
     var h = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
-    var components = library()
+    var components = library("all")
     //LIST OF ITEMS ON DOM
     var list_dom = Array.from(document.querySelectorAll('div[id]')).map(div => ({ title: div.id }))
     //FILTER OUT ONLY OBJECTS ON DOM
     components = joins("overlap", { array_base: components, array_dom: list_dom, key_value: "title" });
     //FILTER OUT CHILD COMMPONENTS - size determiend by parents
+
     components = components.filter(obj => obj["parent"] === "none");
     length_components = components.length;
     console.log("COMPONENTS IN DIMENSION_UPDATE")
@@ -152,15 +153,25 @@ function dimension_update() {
     }
 };
 
-function library() {
+//EVENTUALLY THE LIBRARY COUL DBE EXCEL SHEET UPDATED
+function library(type) {
 //library of components and their respetive classes for events
 //the order of componenets matters here - parents must come first
     var list = [
         {
+            title: "background",
+            notes:"",
+            size: { tall: 10 / 10, wide: 10 / 10 },
+            parent: "none",
+            event: {
+                genesis: { classes: { add: ["background"] }, },
+            },
+        },
+        {
             title: "accent_app",
             notes:"this is for the diopside app",
             parent: "none",
-            size: { tall: 5 / 10, wide: 3 / 10 },
+            size: { tall: 5 / 10, wide: 4 / 10 },
             event: {
                 genesis: { classes: { add: ["accent-icon"] }, },
             },
@@ -495,6 +506,14 @@ function library() {
         },
     ];
 
+    if (type === "all") {
+        return list;
+    }
+    else{
+        return list.filter(obj => obj["event"] && obj["event"].hasOwnProperty(ENV.event));
+    }
+
+
     return list.filter(obj => obj["event"] && obj["event"].hasOwnProperty(ENV.event));
 
     // switch "hasOwnProperty" for "includes" for an array sort value - like: return array.filter(obj => obj[filter_key] && obj[filter_key].includes(filter_value));
@@ -521,92 +540,97 @@ function generate_component(component) {
     //METRICs gathering
     ENV.metric_classes_accrued.push(classes);
 
-    var attributes = component.attributes
+    if (component.hasOwnProperty('attributes') == true) {
+        var attributes = component.attributes
 
-    // VARIABLE ATTRIBUTES
-    if (attributes.hasOwnProperty('svg') == true) {
-        var list_svg = attributes.svg
-        var length_svg = list_svg.length
-
-        var svgNS = "http://www.w3.org/2000/svg";
-        var svg_app_icon = document.createElementNS(svgNS, "svg");
-        for (let i = 0; i < length_svg; i++) {
-            svg_app_icon.setAttributeNS(null, list_svg[i].key, list_svg[i].value);
-        }
-        div.appendChild(svg_app_icon);
-    }
-    if (attributes.hasOwnProperty('rect') == true) {
-        var list_rect = attributes.rect
-        var length_rect = list_rect.length
-        var rect = document.createElementNS(svgNS, "rect");
-        for (let i = 0; i < length_rect; i++) {
-            rect.setAttributeNS(null, list_rect[i].key, list_rect[i].value);
-        }
-        svg_app_icon.appendChild(rect);
-    }
-    if (attributes.hasOwnProperty('g') == true) {
-        var list_g = attributes.g
-        var length_g = list_g.length
-        console.log("LIST OF G ATTRIBUTE GROUPS")
-        console.log(list_g)
-
-        var g = document.createElementNS(svgNS, "g");
-        for (let i = 0; i < length_g; i++) {
-            g.setAttributeNS(null, list_g[i].key, list_g[i].value);
-        }
-        svg_app_icon.appendChild(g);
-    }
-    if (attributes.hasOwnProperty('paths') == true) {
-        var list_paths = attributes.paths
-        var length_paths = list_paths.length
-
-        for (let i = 0; i < length_paths; i++) {
-            var path = document.createElementNS(svgNS, "path");
-            var list_path = attributes.paths[i]
-            var length_path = list_path.length
-            for (let i = 0; i < length_path; i++) {
-                path.setAttributeNS(null, list_path[i].key, list_path[i].value);
+        // VARIABLE ATTRIBUTES
+        if (attributes.hasOwnProperty('svg') == true) {
+            var list_svg = attributes.svg
+            var length_svg = list_svg.length
+    
+            var svgNS = "http://www.w3.org/2000/svg";
+            var svg_app_icon = document.createElementNS(svgNS, "svg");
+            for (let i = 0; i < length_svg; i++) {
+                svg_app_icon.setAttributeNS(null, list_svg[i].key, list_svg[i].value);
             }
-            g.appendChild(path);
+            div.appendChild(svg_app_icon);
         }
-    }
-    if (attributes.hasOwnProperty('circle') == true) {
-        var list_circle = attributes.circle
-        var length_circle = list_circle.length
-        var circle = document.createElementNS(svgNS, "circle");
-        for (let i = 0; i < length_circle; i++) {
-            circle.setAttributeNS(null, list_circle[i].key, list_circle[i].value);
-        }
-        svg_app_icon.appendChild(circle);
-    }
-    if (attributes.hasOwnProperty('text') == true) {
-
-        var list_text = attributes.text
-        var length_text = list_text.length
-
-        console.log("LIST OF TEXT ATTRIBUTE GROUPS")
-        console.log(list_text)
-
-        for (let i = 0; i < length_text; i++) {
-            var text = document.createElementNS(svgNS, "text");
-            var list_text_object = list_text[i]
-            var length_text_object = list_text_object.length
-            for (let i = 0; i < length_text_object; i++) {
-                if (list_text_object[i].key === "content") {
-                    //NOTHING
-                    console.log("LIST_TEXT_OBJECT")
-                    console.log(list_text_object)
-                    text.textContent = list_text_object[i].value;
-                }
-                else {
-                    text.setAttributeNS(null, list_text_object[i].key, list_text_object[i].value);
-                }
+        if (attributes.hasOwnProperty('rect') == true) {
+            var list_rect = attributes.rect
+            var length_rect = list_rect.length
+            var rect = document.createElementNS(svgNS, "rect");
+            for (let i = 0; i < length_rect; i++) {
+                rect.setAttributeNS(null, list_rect[i].key, list_rect[i].value);
             }
-            svg_app_icon.appendChild(text);
+            svg_app_icon.appendChild(rect);
         }
+        if (attributes.hasOwnProperty('g') == true) {
+            var list_g = attributes.g
+            var length_g = list_g.length
+            console.log("LIST OF G ATTRIBUTE GROUPS")
+            console.log(list_g)
+    
+            var g = document.createElementNS(svgNS, "g");
+            for (let i = 0; i < length_g; i++) {
+                g.setAttributeNS(null, list_g[i].key, list_g[i].value);
+            }
+            svg_app_icon.appendChild(g);
+        }
+        if (attributes.hasOwnProperty('paths') == true) {
+            var list_paths = attributes.paths
+            var length_paths = list_paths.length
+    
+            for (let i = 0; i < length_paths; i++) {
+                var path = document.createElementNS(svgNS, "path");
+                var list_path = attributes.paths[i]
+                var length_path = list_path.length
+                for (let i = 0; i < length_path; i++) {
+                    path.setAttributeNS(null, list_path[i].key, list_path[i].value);
+                }
+                g.appendChild(path);
+            }
+        }
+        if (attributes.hasOwnProperty('circle') == true) {
+            var list_circle = attributes.circle
+            var length_circle = list_circle.length
+            var circle = document.createElementNS(svgNS, "circle");
+            for (let i = 0; i < length_circle; i++) {
+                circle.setAttributeNS(null, list_circle[i].key, list_circle[i].value);
+            }
+            svg_app_icon.appendChild(circle);
+        }
+        if (attributes.hasOwnProperty('text') == true) {
+    
+            var list_text = attributes.text
+            var length_text = list_text.length
+    
+            console.log("LIST OF TEXT ATTRIBUTE GROUPS")
+            console.log(list_text)
+    
+            for (let i = 0; i < length_text; i++) {
+                var text = document.createElementNS(svgNS, "text");
+                var list_text_object = list_text[i]
+                var length_text_object = list_text_object.length
+                for (let i = 0; i < length_text_object; i++) {
+                    if (list_text_object[i].key === "content") {
+                        //NOTHING
+                        console.log("LIST_TEXT_OBJECT")
+                        console.log(list_text_object)
+                        text.textContent = list_text_object[i].value;
+                    }
+                    else {
+                        text.setAttributeNS(null, list_text_object[i].key, list_text_object[i].value);
+                    }
+                }
+                svg_app_icon.appendChild(text);
+            }
+        }
+    
+        // END VARIABLE ATTRIBUTES
+    
+
     }
 
-    // END VARIABLE ATTRIBUTES
 
     if (parent === "none") {
         document.body.appendChild(div);
