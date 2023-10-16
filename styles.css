@@ -252,10 +252,10 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  animation: draw 1s forwards, blackToGrey 0.5s 1s forwards;
+  animation: draw 1s forwards,;
 }
 
-.highlight:hover {
+.highlight-green:hover {
   filter: invert(21%) sepia(8%) saturate(3227%) hue-rotate(95deg) brightness(92%) contrast(85%);
 }
 

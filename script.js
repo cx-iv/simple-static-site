@@ -15,7 +15,6 @@ var ENV = {
     metric_classes_accrued: ["classes that get applied are accrued here in event_handler - push classes to this array - animals.push('cows');"],
 };
 
-
 document.addEventListener('DOMContentLoaded', (event) => { event_handler("genesis"); });
 //need DOM loaded first
 
@@ -68,7 +67,7 @@ function event_handler(event) {
     console.log(list_generate)
 
 
-    //APPLY CLASSES
+    //CSS
     length_css = list_css.length
     for (let i = 0; i < length_css; i++) {
         //APPEND HERE - metric_classes_accrued
@@ -85,13 +84,13 @@ function event_handler(event) {
         });
     }
 
-    //REMOVE COMPONENTS
+    //DELETE
     length_delete = list_delete.length
     for (let i = 0; i < length_delete; i++) {
         document.getElementById(list_delete[i].title).remove();
     }
 
-    //GENERATE COMPONENTS
+    //GENERATE
     length_generate = list_generate.length
     for (let i = 0; i < length_generate; i++) {
         generate_component(list_generate[i]);
@@ -155,7 +154,7 @@ function library(type) {
             title: "accent_app",
             notes: "this is for the diopside app",
             parent: "none",
-            size: { tall: 2 / 10, wide: 2 / 10 },
+            size: { tall: 3 / 10, wide: 2 / 10 },
             event: {
                 genesis: { type: "generate", classes: { add: ["accent-icon"] }, },
             },
@@ -295,11 +294,11 @@ function library(type) {
             size: "ABSOLUTE_DRIVEN_BY_PARENT",
             event: {
                 genesis: { type: "generate", classes: { add: ["select-resources", "disabled"], } },
-                select_generated: { type: "css", classes: { add: ["highlight"], remove: ["disabled"] } },
-                click_about: { type: "css", classes: { add: ["disabled", "animate-erase"], remove: ["highlight", "animate-draw"] } },
-                click_resources: { type: "css", classes: { add: ["disabled", "animate-clicked",], remove: ["highlight", "animate-draw"] } },
-                generate_select_from_detail_resources: { type: "generate", classes: { add: ["disabled", "select-resources", "animate-draw", "highlight"], } },
-                generate_select_from_detail_about: { type: "generate", classes: { add: ["disabled", "select-resources", "animate-draw", "highlight"], } },
+                select_generated: { type: "css", classes: { add: ["highlight-green"], remove: ["disabled"] } },
+                click_about: { type: "css", classes: { add: ["disabled", "animate-erase"], remove: ["highlight-green", "animate-draw"] } },
+                click_resources: { type: "css", classes: { add: ["disabled", "animate-clicked",], remove: ["highlight-green", "animate-draw"] } },
+                generate_select_from_detail_resources: { type: "generate", classes: { add: ["disabled", "select-resources", "animate-draw", "highlight-green"], } },
+                generate_select_from_detail_about: { type: "generate", classes: { add: ["disabled", "select-resources", "animate-draw", "highlight-green"], } },
             },
             attributes: {
                 svg: [
@@ -338,11 +337,11 @@ function library(type) {
             size: "ABSOLUTE_DRIVEN_BY_PARENT",
             event: {
                 genesis: { type: "generate", classes: { add: ["select-about", "disabled"], } },
-                select_generated: { type: "css", classes: { add: ["highlight"], remove: ["disabled"] } },
-                click_about: { type: "css", classes: { add: ["disabled", "animate-clicked"], remove: ["highlight", "animate-draw"] } },
-                click_resources: { type: "css", classes: { add: ["disabled", "animate-erase"], remove: ["highlight", "animate-draw"] } },
-                generate_select_from_detail_resources: { type: "generate", classes: { add: ["disabled", "select-about", "animate-draw", "highlight"], } },
-                generate_select_from_detail_about: { type: "generate", classes: { add: ["disabled", "select-about", "animate-draw", "highlight"], } },
+                select_generated: { type: "css", classes: { add: ["highlight-green"], remove: ["disabled"] } },
+                click_about: { type: "css", classes: { add: ["disabled", "animate-clicked"], remove: ["highlight-green", "animate-draw"] } },
+                click_resources: { type: "css", classes: { add: ["disabled", "animate-erase"], remove: ["highlight-green", "animate-draw"] } },
+                generate_select_from_detail_resources: { type: "generate", classes: { add: ["disabled", "select-about", "animate-draw", "highlight-green"], } },
+                generate_select_from_detail_about: { type: "generate", classes: { add: ["disabled", "select-about", "animate-draw", "highlight-green"], } },
             },
             attributes: {
                 svg: [
@@ -400,13 +399,13 @@ function library(type) {
             parent: "none",
             size: { tall: 2 / 10, wide: 1.5 / 10 },
             event: {
-                click_about: { type: "generate", classes: { add: ["disabled", "select-exit", "genesis-select-exit", "highlight"] } },
-                click_resources: { type: "generate", classes: { add: ["disabled", "select-exit", "genesis-select-exit", "highlight"] } },
-                click_exit_click_about: { type: "css", classes: { add: ["disabled", "click-select-exit"], remove: ["highlight", "genesis-select-exit"] } },
-                click_exit_click_resources: { type: "css", classes: { add: ["disabled", "click-select-exit"], remove: ["highlight", "genesis-select-exit"] } },
+                click_about: { type: "generate", classes: { add: ["disabled", "select-exit", "genesis-select-exit", "highlight-green"] } },
+                click_resources: { type: "generate", classes: { add: ["disabled", "select-exit", "genesis-select-exit", "highlight-green"] } },
+                click_exit_click_about: { type: "css", classes: { add: ["disabled", "click-select-exit"], remove: ["highlight-green", "genesis-select-exit"] } },
+                click_exit_click_resources: { type: "css", classes: { add: ["disabled", "click-select-exit"], remove: ["highlight-green", "genesis-select-exit"] } },
                 generate_select_from_detail_resources: { type: "delete", },
                 generate_select_from_detail_about: { type: "delete", },
-                exit_generated: { type: "css", classes: { add: ["highlight"], remove: ["disabled"] } },
+                exit_generated: { type: "css", classes: { add: ["highlight-green"], remove: ["disabled"] } },
             },
             attributes: {
                 svg: [
@@ -460,28 +459,41 @@ function library(type) {
                     { key: "viewBox", value: "0 0 1200 1200" },
                 ],
                 g: [
-                    { key: "stroke", value: "#7D7D7D" },
-                    { key: "stroke-width", value: "15" },
                     { key: "stroke-dasharray", value: 1 },
                 ],
-                // paths: [
-                //     [
-                //         {
-                //             key: "d",
-                //             value: "m1081.2 898.56c-14.797-10.953-28.074-23.824-39.48-38.277-27.84-32.281-59.398-68.281-122.52-68.281-63.121 0-94.68 36-122.52 68.281-25.199 28.918-45.121 51.719-86.281 51.719-41.16 0-61.199-22.801-86.398-51.719-27.84-32.281-59.398-68.281-122.52-68.281-63.121 0-94.68 36-122.52 68.281-25.082 28.918-45 51.719-86.281 51.719s-61.078-22.801-86.281-51.719c-17.258-22.672-39.035-41.512-63.957-55.32-7.6562-3.4727-16.566-2.6875-23.496 2.0664-6.9297 4.7539-10.867 12.785-10.383 21.176 0.48828 8.3906 5.3242 15.914 12.758 19.836 19.004 11.191 35.605 26.039 48.84 43.68 27.961 32.281 59.52 68.281 122.52 68.281s94.68-36 122.52-68.281c25.199-28.918 45.121-51.719 86.281-51.719 41.16 0 61.078 22.801 86.281 51.719 27.84 32.281 59.398 68.281 122.64 68.281 63.238 0 94.68-36 122.52-68.281 25.082-28.918 45.004-51.719 86.281-51.719 41.281 0 61.199 22.801 86.281 51.719 14.188 17.848 30.789 33.641 49.32 46.922 5.3125 3.6289 11.859 4.9688 18.172 3.7266 6.3164-1.2461 11.863-4.9727 15.402-10.348 3.5391-5.3711 4.7734-11.941 3.4258-18.234-1.3516-6.2891-5.168-11.777-10.602-15.227z"
-                //         },
-                //         { key: "pathLength", value: 1 },
-                //         { key: "id", value: "path_one" },
-                //     ],
-                // ],
+                paths: [
+                    [
+                        {
+                            key: "d",
+                            value: "M0,0 L1200,0 L1200,1200 L0,1200 L0,0"
+                        },
+                        { key: "pathLength", value: 1 },
+                        { key: "id", value: "path_square" },
+                        { key: "stroke-width", value: "10" },
+                        { key: "stroke", value: "#ffffff" },
+                    ],
+
+                    [
+                        {
+                            key: "d",
+                            value: "M958.98,112.559h-9.6V97.525c0-3.585-.064-8.2-4.993-8.2-5,0-5.765,3.906-5.765,7.939v15.294h-9.6V81.642h9.216v4.225h.129a10.1,10.1,0,0,1,9.093-4.994c9.73,0,11.524,6.4,11.524,14.726ZM918.19,77.416a5.571,5.571,0,1,1,5.57-5.572,5.571,5.571,0,0,1-5.57,5.572m4.8,35.143h-9.61V81.642h9.61Zm40.776-55.2h-55.21a4.728,4.728,0,0,0-4.781,4.67v55.439a4.731,4.731,0,0,0,4.781,4.675h55.21a4.741,4.741,0,0,0,4.8-4.675V62.025a4.738,4.738,0,0,0-4.8-4.67"
+                        },
+                        { key: "pathLength", value: 1 },
+                        { key: "id", value: "path_one" },
+                        { key: "stroke-width", value: "0" },
+                        { key: "fill", value: "#ffffff" },
+                        { key: "transform", value: "translate(-1000 500) scale(2)" },
+                        { key: "stroke", value: "#ffffff" },
+                    ],
+                ],
                 text: [
                     [
-                        { key: "x", value: "50" },
-                        { key: "y", value: "100" },
+                        { key: "x", value: "10" },
+                        { key: "y", value: "60" },
                         { key: "font-size", value: "50" },
                         { key: "fill", value: "#ffffff" },
                         { key: "font-family", value: "sans-serif" },
-                        { key: "content", value: "ABOUTABOUTABOUTABOUTABOUTABOUTABOUTABOUT" },
+                        { key: "content", value: "ABOUTABOUTABOUTABOUTABOUTABOUTABOUT" },
                     ]
                 ],
             }
