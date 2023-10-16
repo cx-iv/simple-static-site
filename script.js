@@ -327,11 +327,11 @@ function library(type) {
             parent: "accent_select",
             size: "ABSOLUTE_DRIVEN_BY_PARENT",
             event: {
-                genesis: { classes: { add: ["select-resources", "filter"], } },
-                click_about: { classes: { add: ["animate-erase"],remove: ["animate-draw"] } },
-                click_resources: { classes: { add: ["animate-clicked",],remove: ["animate-draw"] } },
-                generate_select_about: { classes: { add: ["select-resources","animate-draw","filter"], } },
-                generate_select_resources: { classes: { add: ["select-resources","animate-draw","filter"], } },
+                genesis: { classes: { add: ["select-resources", "highlight"], } },
+                click_about: { classes: { add: ["disabled","animate-erase"],remove: ["highlight","animate-draw"] } },
+                click_resources: { classes: { add: ["disabled","animate-clicked",],remove: ["highlight","animate-draw"] } },
+                generate_select_about: { classes: { add: ["select-resources","animate-draw","highlight"], } },
+                generate_select_resources: { classes: { add: ["select-resources","animate-draw","highlight"], } },
             },
             attributes: {
                 svg: [
@@ -369,11 +369,11 @@ function library(type) {
             parent: "accent_select",
             size: "ABSOLUTE_DRIVEN_BY_PARENT",
             event: {
-                genesis: { classes: { add: ["select-about","filter"], } },
-                click_about: { classes: { add: ["animate-clicked"],remove: ["animate-draw"] } },
-                click_resources: { classes: { add: ["animate-erase"],remove: ["animate-draw"] } },
-                generate_select_about: { classes: { add: ["select-about","animate-draw","filter"], } },
-                generate_select_resources: { classes: { add: ["select-about","animate-draw","filter"], } },
+                genesis: { classes: { add: ["select-about","highlight"], } },
+                click_about: { classes: { add: ["disabled","animate-clicked"],remove: ["highlight","animate-draw"] } },
+                click_resources: { classes: { add: ["disabled","animate-erase"],remove: ["highlight","animate-draw"] } },
+                generate_select_about: { classes: { add: ["select-about","animate-draw","highlight"], } },
+                generate_select_resources: { classes: { add: ["select-about","animate-draw","highlight"], } },
             },
             attributes: {
                 svg: [
@@ -431,10 +431,10 @@ function library(type) {
             parent: "none",
             size: { tall: 2 / 10, wide: 1.5 / 10 },
             event: {
-                click_about: { classes: { add: ["select-exit","genesis-select-exit","filter"] } },
-                click_resources: { classes: { add: ["select-exit","genesis-select-exit","filter"] } },
-                click_exit_click_about: { classes: { add: ["click-select-exit"], remove: ["genesis-select-exit"] } },
-                click_exit_click_resources: { classes: { add: ["click-select-exit"], remove: ["genesis-select-exit"] } },
+                click_about: { classes: { add: ["select-exit","genesis-select-exit","highlight"] } },
+                click_resources: { classes: { add: ["select-exit","genesis-select-exit","highlight"] } },
+                click_exit_click_about: { classes: { add: ["disabled","click-select-exit"], remove: ["highlight","genesis-select-exit"] } },
+                click_exit_click_resources: { classes: { add: ["disabled","click-select-exit"], remove: ["highlight","genesis-select-exit"] } },
                 generate_select_about: { classes: { add: ["none"], } },
                 generate_select_resources: { classes: { add: ["none"], } },
             },
