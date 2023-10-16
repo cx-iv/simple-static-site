@@ -13,41 +13,38 @@ console.log("please steal, feedback welcome: github.com/cx-iv/simple-static-site
 var ENV = {
     event: "NULL_ON_LOAD",
     metric_classes_accrued: ["classes that get applied are accrued here in event_handler - push classes to this array - animals.push('cows');"],
-    type: {
-        //this is the full list events in the system - architecture here needs to be ~ rethunk ~
-        genesis: "dom",
-        click_about: "css",
-        click_resources: "css",
-        generate_about: "dom",
-        generate_resources: "dom",
-        click_exit_click_resources: "css",
-        click_exit_click_about: "css",
-        generate_select_about: "dom",
-        generate_select_resources: "dom",
-    },
 };
 
-//need DOM loaded first
 document.addEventListener('DOMContentLoaded', (event) => { event_handler("genesis"); });
+//need DOM loaded first
 
-//captures animation events
 document.addEventListener("animationend", (event) => {
-    if (event.animationName === "rotateGenesisSelectExit" && ENV.event === "click_about") {
-        console.log("THE X JUST OPENED FOR ABOUT");
-        event_handler("generate_about")
+    //captures animation events
+    if (event.animationName === "fillWhiteToBlack") {
+        event_handler("select_generated");
+    }
+    else if (event.animationName === "rotateGenesisSelectExit" && ENV.event === "click_about") {
+        event_handler("background_black");
+        event_handler("generate_detail_about");
+        event_handler("exit_generated");
     }
     else if (event.animationName === "rotateGenesisSelectExit" && ENV.event === "click_resources") {
-        console.log("THE X JUST OPENED FOR RESOURCES");
-        event_handler("generate_resources")
+        event_handler("background_black");
+        event_handler("generate_detail_resources");
+        event_handler("exit_generated");
     }
-    else if (event.animationName === "contractToNormal" && ENV.event === "click_exit_click_resources") {
-        console.log(ENV.event);
-        event_handler("generate_select_resources")
+    else if (event.animationName === "eraseClickSelectExit" && ENV.event === "click_exit_click_resources") {
+        event_handler("generate_select_from_detail_resources")
     }
-    else if (event.animationName === "contractToNormal" && ENV.event === "click_exit_click_about") {
-        console.log(ENV.event);
-        event_handler("generate_select_about")
+    else if (event.animationName === "eraseClickSelectExit" && ENV.event === "click_exit_click_about") {
+        event_handler("generate_select_from_detail_about")
     }
+    else if (event.animationName === "expandFillPageGhost") {
+        event_handler("background_white");
+        event_handler("remove_ghost_accent");
+        event_handler("select_generated");
+    }
+
 });
 
 window.onresize = dimension_update;
@@ -55,67 +52,47 @@ window.onresize = dimension_update;
 function event_handler(event) {
     console.log("EVENT JUST RAN")
     console.log(event)
-
     console.log(ENV)
     ENV.event = event;
 
-    var components_lib_event = library()
-    console.log("LIST_LIB_EVENT_COMPONENTS")
-    console.log(components_lib_event)
+    var components_event = library()
 
-    var list_dom = Array.from(document.querySelectorAll('div[id]')).map(div => ({ title: div.id }))
-    console.log("LIST_DOM")
-    console.log(list_dom)
+    list_css = components_event.filter(item => item.event[event].type === "css");
+    list_delete = components_event.filter(item => item.event[event].type === "delete");
+    list_generate = components_event.filter(item => item.event[event].type === "generate");
 
-    list_generate = joins("not_on_dom", { array_lib: components_lib_event, array_dom: list_dom, key_value: "title" });
-    console.log("LIST_GENERATE")
+    console.log("LISTS: CSS,DELETE,GENERATE")
+    console.log(list_css)
+    console.log(list_delete)
     console.log(list_generate)
 
-    list_existing_elements = joins("components_on_dom", { array_base: components_lib_event, array_delete: list_generate, key_value: "title" });
-    console.log("LIST_list_existing_elements")
-    console.log(list_existing_elements)
 
-
-    length_list_existing_elements = list_existing_elements.length
-
-    if (ENV.type[event] === "css") {
-        //APPLY CLASSES
-        console.log("APPLY CLASSES")
-        for (let i = 0; i < length_list_existing_elements; i++) {
-            //APPEND HERE - metric_classes_accrued
-            ENV.metric_classes_accrued.push(list_existing_elements[i].event[event].classes.add)
-            console.log("*******RELEVANT*******")
-            console.log(list_existing_elements[i].event[event].classes)
-
-            //REMOVE CLASSES
-            if (list_existing_elements[i].event[event].classes.hasOwnProperty("remove")) {
-                console.log("REMOVE THESE CLASSES")
-                console.log(list_existing_elements[i].event[event].classes.remove)
-                console.log("FROM THIS DIV")
-                console.log(list_existing_elements[i].title)
-                list_existing_elements[i].event[event].classes.remove.forEach(className => {
-                    document.getElementById(list_existing_elements[i].title).classList.remove(className);
-                });
-            }
-            //ADD CLASSES
-            console.log("ADD CLASSES")
-            list_existing_elements[i].event[event].classes.add.forEach(className => {
-                document.getElementById(list_existing_elements[i].title).classList.add(className);
+    //CSS
+    length_css = list_css.length
+    for (let i = 0; i < length_css; i++) {
+        //APPEND HERE - metric_classes_accrued
+        ENV.metric_classes_accrued.push(list_css[i].event[event].classes.add)
+        //REMOVE CLASSES
+        if (list_css[i].event[event].classes.hasOwnProperty("remove")) {
+            list_css[i].event[event].classes.remove.forEach(className => {
+                document.getElementById(list_css[i].title).classList.remove(className);
             });
         }
+        //ADD CLASSES
+        list_css[i].event[event].classes.add.forEach(className => {
+            document.getElementById(list_css[i].title).classList.add(className);
+        });
     }
-    else if (ENV.type[event] === "dom") {
-        //REMOVE COMPONENTS
-        console.log("REMOVE COMPONENTS")
-        for (let i = 0; i < length_list_existing_elements; i++) {
-            console.log("REMOVE COMPONENTS")
-            document.getElementById(list_existing_elements[i].title).remove();
-        }
+
+    //DELETE
+    length_delete = list_delete.length
+    for (let i = 0; i < length_delete; i++) {
+        document.getElementById(list_delete[i].title).remove();
     }
-    //GENERATE COMPONENTS
+
+    //GENERATE
     length_generate = list_generate.length
     for (let i = 0; i < length_generate; i++) {
-        console.log("GENERATE COMPONENTS")
         generate_component(list_generate[i]);
     }
 
@@ -130,17 +107,19 @@ function dimension_update() {
     var w = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
     var h = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
     var components = library("all")
+
     //LIST OF ITEMS ON DOM
     var list_dom = Array.from(document.querySelectorAll('div[id]')).map(div => ({ title: div.id }))
-    //FILTER OUT ONLY OBJECTS ON DOM
+    //PULL FULL LIBRARY + FILTER OUT ONLY OBJECTS ON DOM
     components = joins("overlap", { array_base: components, array_dom: list_dom, key_value: "title" });
     //FILTER OUT CHILD COMMPONENTS - size determiend by parents
-
     components = components.filter(obj => obj["parent"] === "none");
+    //FILTER OUT static size components like "background"
+    components = components.filter(obj => obj.hasOwnProperty("size"));
+
     length_components = components.length;
-    console.log("COMPONENTS IN DIMENSION_UPDATE")
-    console.log(components)
     for (let i = 0; i < length_components; i++) {
+
         if (h > w) {
             shape = "tall";
             item_size = w * components[i].size[shape]
@@ -150,30 +129,34 @@ function dimension_update() {
             item_size = h * components[i].size[shape]
         }
         document.getElementById(components[i].title).style.width = item_size + "px";
+
+
     }
 };
 
-//EVENTUALLY THE LIBRARY COUL DBE EXCEL SHEET UPDATED
 function library(type) {
-//library of components and their respetive classes for events
-//the order of componenets matters here - parents must come first
+    //library of components and their respetive classes for events
+    //the order of componenets matters here - parents must come first
+    //EVENTUALLY THE LIBRARY COULD BE EXCEL SHEET UPDATED - would need to update the CSS file als - different JS job for both
+
     var list = [
         {
             title: "background",
-            notes:"",
-            size: { tall: 10 / 10, wide: 10 / 10 },
+            notes: "size is not dynamic and just set to 100% by the 'background' CSS property",
             parent: "none",
             event: {
-                genesis: { classes: { add: ["background"] }, },
+                genesis: { type: "generate", classes: { add: ["background", "background-white"] }, },
+                background_black: { type: "css", classes: { add: ["background-black"], remove: ["background-white"] } },
+                background_white: { type: "css", classes: { add: ["background-white"], remove: ["background-black"] } },
             },
         },
         {
             title: "accent_app",
-            notes:"this is for the diopside app",
+            notes: "this is for the diopside app",
             parent: "none",
-            size: { tall: 5 / 10, wide: 4 / 10 },
+            size: { tall: 3 / 10, wide: 2 / 10 },
             event: {
-                genesis: { classes: { add: ["accent-icon"] }, },
+                genesis: { type: "generate", classes: { add: ["accent-icon"] }, },
             },
             attributes: {
                 svg: [
@@ -185,7 +168,7 @@ function library(type) {
                 circle: [
                     { key: "cx", value: "0" },
                     { key: "cy", value: "0" },
-                    { key: "r", value: "800" },
+                    { key: "r", value: "1200" },
                     { key: "fill", value: "#ffffff" },
                 ],
             },
@@ -193,9 +176,8 @@ function library(type) {
         {
             title: "app",
             parent: "accent_app",
-            size: { tall: 1.5 / 10, wide: 2 / 10 },
             event: {
-                genesis: { classes: { add: ["icon"] } },
+                genesis: { type: "generate", classes: { add: ["icon"] } },
             },
             attributes: {
                 svg: [
@@ -224,11 +206,13 @@ function library(type) {
             parent: "none",
             size: { tall: 9 / 10, wide: 7 / 10 },
             event: {
-                genesis: { classes: { add: ["accent-select", "genesis-accent-select"], }, },
-                click_about: { classes: { add: ["expand-fill-page"], remove: ["exit-animation-select-accent"]} },
-                click_resources: { classes: { add: ["expand-fill-page"], remove: ["exit-animation-select-accent"]} },
-                click_exit_click_about: { classes: { add: ["exit-animation-select-accent"],remove: ["genesis-select-accent","expand-fill-page",], } },
-                click_exit_click_resources: { classes: { add: ["exit-animation-select-accent"],remove: ["genesis-select-accent","expand-fill-page"], } },
+                genesis: { type: "generate", classes: { add: ["accent-select", "genesis-accent-select"], }, },
+                click_about: { type: "css", classes: { add: ["expand-fill-page"], remove: ["exit-animation-select-accent"] } },
+                click_resources: { type: "css", classes: { add: ["expand-fill-page"], remove: ["exit-animation-select-accent"] } },
+                generate_detail_about: { type: "delete", },
+                generate_detail_resources: { type: "delete", },
+                generate_select_from_detail_resources: { type: "generate", classes: { add: ["accent-select-post-exit"], }, },
+                generate_select_from_detail_about: { type: "generate", classes: { add: ["accent-select-post-exit"], }, },
             },
             attributes: {
                 svg: [
@@ -263,17 +247,58 @@ function library(type) {
             }
         },
         {
+            title: "ghost_accent_select",
+            parent: "none",
+            size: { tall: 9 / 10, wide: 7 / 10 },
+            event: {
+                generate_select_from_detail_resources: { type: "generate", classes: { add: ["genesis-ghost-accent-select"], }, },
+                generate_select_from_detail_about: { type: "generate", classes: { add: ["genesis-ghost-accent-select"], }, },
+                remove_ghost_accent: { type: "delete", },
+            },
+            attributes: {
+                svg: [
+                    { key: "width", value: "100%" },
+                    { key: "height", value: "100%" },
+                    { key: "version", value: "1.1" },
+                    { key: "viewBox", value: "0 0 800 300" },
+                ],
+                g: [
+                    { key: "stroke", value: "#ffffff" },
+                    { key: "fill", value: "#ffffff" },
+                    { key: "stroke-width", value: "45" },
+                    { key: "stroke-dasharray", value: 1 },
+                ],
+                paths: [
+                    [
+                        {
+                            key: "d",
+                            value: "M 150,250 A 100,100 0 0,1 150,50 L 652 50"
+                        },
+                        { key: "pathLength", value: 1 },
+                        { key: "id", value: "path_one" },
+                    ],
+                    [
+                        {
+                            key: "d",
+                            value: "M 650,50 A 100,100 0 0,1 650,250 L 148 250"
+                        },
+                        { key: "pathLength", value: 1 },
+                        { key: "id", value: "path_two" },
+                    ],
+                ],
+            }
+        },
+        {
             title: "resources",
             parent: "accent_select",
             size: "ABSOLUTE_DRIVEN_BY_PARENT",
             event: {
-                genesis: { classes: { add: ["select-resources", "filter"], } },
-                click_about: { classes: { add: ["animate-erase"],remove: ["animate-draw"] } },
-                click_resources: { classes: { add: ["animate-clicked",],remove: ["animate-draw"] } },
-                generate_resources: { classes: { add: ["none"], remove: true, } },
-                generate_about: { classes: { add: ["none"], remove: true, } },
-                generate_select_about: { classes: { add: ["select-resources","animate-draw","filter"], } },
-                generate_select_resources: { classes: { add: ["select-resources","animate-draw","filter"], } },
+                genesis: { type: "generate", classes: { add: ["select-resources", "disabled"], } },
+                select_generated: { type: "css", classes: { add: ["highlight-green"], remove: ["disabled"] } },
+                click_about: { type: "css", classes: { add: ["disabled", "animate-erase"], remove: ["highlight-green", "animate-draw"] } },
+                click_resources: { type: "css", classes: { add: ["disabled", "animate-clicked",], remove: ["highlight-green", "animate-draw"] } },
+                generate_select_from_detail_resources: { type: "generate", classes: { add: ["disabled", "select-resources", "animate-draw", "highlight-green"], } },
+                generate_select_from_detail_about: { type: "generate", classes: { add: ["disabled", "select-resources", "animate-draw", "highlight-green"], } },
             },
             attributes: {
                 svg: [
@@ -311,13 +336,12 @@ function library(type) {
             parent: "accent_select",
             size: "ABSOLUTE_DRIVEN_BY_PARENT",
             event: {
-                genesis: { classes: { add: ["select-about","filter"], } },
-                click_about: { classes: { add: ["animate-clicked"],remove: ["animate-draw"] } },
-                click_resources: { classes: { add: ["animate-erase"],remove: ["animate-draw"] } },
-                generate_resources: { classes: { add: ["none"] } },
-                generate_about: { classes: { add: ["none"] } },
-                generate_select_about: { classes: { add: ["select-about","animate-draw","filter"], } },
-                generate_select_resources: { classes: { add: ["select-about","animate-draw","filter"], } },
+                genesis: { type: "generate", classes: { add: ["select-about", "disabled"], } },
+                select_generated: { type: "css", classes: { add: ["highlight-green"], remove: ["disabled"] } },
+                click_about: { type: "css", classes: { add: ["disabled", "animate-clicked"], remove: ["highlight-green", "animate-draw"] } },
+                click_resources: { type: "css", classes: { add: ["disabled", "animate-erase"], remove: ["highlight-green", "animate-draw"] } },
+                generate_select_from_detail_resources: { type: "generate", classes: { add: ["disabled", "select-about", "animate-draw", "highlight-green"], } },
+                generate_select_from_detail_about: { type: "generate", classes: { add: ["disabled", "select-about", "animate-draw", "highlight-green"], } },
             },
             attributes: {
                 svg: [
@@ -375,12 +399,13 @@ function library(type) {
             parent: "none",
             size: { tall: 2 / 10, wide: 1.5 / 10 },
             event: {
-                click_about: { classes: { add: ["select-exit","genesis-select-exit","filter"] } },
-                click_resources: { classes: { add: ["select-exit","genesis-select-exit","filter"] } },
-                click_exit_click_about: { classes: { add: ["click-select-exit"], remove: ["genesis-select-exit"] } },
-                click_exit_click_resources: { classes: { add: ["click-select-exit"], remove: ["genesis-select-exit"] } },
-                generate_select_about: { classes: { add: ["none"], } },
-                generate_select_resources: { classes: { add: ["none"], } },
+                click_about: { type: "generate", classes: { add: ["disabled", "select-exit", "genesis-select-exit", "highlight-green"] } },
+                click_resources: { type: "generate", classes: { add: ["disabled", "select-exit", "genesis-select-exit", "highlight-green"] } },
+                click_exit_click_about: { type: "css", classes: { add: ["disabled", "click-select-exit"], remove: ["highlight-green", "genesis-select-exit"] } },
+                click_exit_click_resources: { type: "css", classes: { add: ["disabled", "click-select-exit"], remove: ["highlight-green", "genesis-select-exit"] } },
+                generate_select_from_detail_resources: { type: "delete", },
+                generate_select_from_detail_about: { type: "delete", },
+                exit_generated: { type: "css", classes: { add: ["highlight-green"], remove: ["disabled"] } },
             },
             attributes: {
                 svg: [
@@ -389,7 +414,7 @@ function library(type) {
                     { key: "version", value: "1.1" },
                     { key: "viewBox", value: "0 0 1200 1200" },
                     { key: "style", value: "cursor:pointer;" },
-                    { key: "onclick", value: "event_handler('click_exit_"+ENV.event+"')" },
+                    { key: "onclick", value: "event_handler('click_exit_" + ENV.event + "')" },
                 ],
                 g: [
                     { key: "stroke", value: "#ffffff" },
@@ -422,9 +447,9 @@ function library(type) {
             parent: "none",
             size: { tall: 9 / 10, wide: 8 / 10 },
             event: {
-                generate_about: { classes: { add: ["detail",], } },
-                click_exit_click_about: { classes: { add: ["fade-hide"]} },
-                generate_select_about: { classes: { add: ["none"], } },
+                generate_detail_about: { type: "generate", classes: { add: ["detail",], } },
+                click_exit_click_about: { type: "css", classes: { add: ["fade-hide"] } },
+                generate_select_from_detail_about: { type: "delete", classes: { add: ["none"], } },
             },
             attributes: {
                 svg: [
@@ -434,28 +459,41 @@ function library(type) {
                     { key: "viewBox", value: "0 0 1200 1200" },
                 ],
                 g: [
-                    { key: "stroke", value: "#7D7D7D" },
-                    { key: "stroke-width", value: "15" },
                     { key: "stroke-dasharray", value: 1 },
                 ],
-                // paths: [
-                //     [
-                //         {
-                //             key: "d",
-                //             value: "m1081.2 898.56c-14.797-10.953-28.074-23.824-39.48-38.277-27.84-32.281-59.398-68.281-122.52-68.281-63.121 0-94.68 36-122.52 68.281-25.199 28.918-45.121 51.719-86.281 51.719-41.16 0-61.199-22.801-86.398-51.719-27.84-32.281-59.398-68.281-122.52-68.281-63.121 0-94.68 36-122.52 68.281-25.082 28.918-45 51.719-86.281 51.719s-61.078-22.801-86.281-51.719c-17.258-22.672-39.035-41.512-63.957-55.32-7.6562-3.4727-16.566-2.6875-23.496 2.0664-6.9297 4.7539-10.867 12.785-10.383 21.176 0.48828 8.3906 5.3242 15.914 12.758 19.836 19.004 11.191 35.605 26.039 48.84 43.68 27.961 32.281 59.52 68.281 122.52 68.281s94.68-36 122.52-68.281c25.199-28.918 45.121-51.719 86.281-51.719 41.16 0 61.078 22.801 86.281 51.719 27.84 32.281 59.398 68.281 122.64 68.281 63.238 0 94.68-36 122.52-68.281 25.082-28.918 45.004-51.719 86.281-51.719 41.281 0 61.199 22.801 86.281 51.719 14.188 17.848 30.789 33.641 49.32 46.922 5.3125 3.6289 11.859 4.9688 18.172 3.7266 6.3164-1.2461 11.863-4.9727 15.402-10.348 3.5391-5.3711 4.7734-11.941 3.4258-18.234-1.3516-6.2891-5.168-11.777-10.602-15.227z"
-                //         },
-                //         { key: "pathLength", value: 1 },
-                //         { key: "id", value: "path_one" },
-                //     ],
-                // ],
+                paths: [
+                    [
+                        {
+                            key: "d",
+                            value: "M0,0 L1200,0 L1200,1200 L0,1200 L0,0"
+                        },
+                        { key: "pathLength", value: 1 },
+                        { key: "id", value: "path_square" },
+                        { key: "stroke-width", value: "10" },
+                        { key: "stroke", value: "#ffffff" },
+                    ],
+
+                    [
+                        {
+                            key: "d",
+                            value: "M958.98,112.559h-9.6V97.525c0-3.585-.064-8.2-4.993-8.2-5,0-5.765,3.906-5.765,7.939v15.294h-9.6V81.642h9.216v4.225h.129a10.1,10.1,0,0,1,9.093-4.994c9.73,0,11.524,6.4,11.524,14.726ZM918.19,77.416a5.571,5.571,0,1,1,5.57-5.572,5.571,5.571,0,0,1-5.57,5.572m4.8,35.143h-9.61V81.642h9.61Zm40.776-55.2h-55.21a4.728,4.728,0,0,0-4.781,4.67v55.439a4.731,4.731,0,0,0,4.781,4.675h55.21a4.741,4.741,0,0,0,4.8-4.675V62.025a4.738,4.738,0,0,0-4.8-4.67"
+                        },
+                        { key: "pathLength", value: 1 },
+                        { key: "id", value: "path_one" },
+                        { key: "stroke-width", value: "0" },
+                        { key: "fill", value: "#ffffff" },
+                        { key: "transform", value: "translate(-1000 500) scale(2)" },
+                        { key: "stroke", value: "#ffffff" },
+                    ],
+                ],
                 text: [
                     [
-                        { key: "x", value: "50" },
-                        { key: "y", value: "100" },
+                        { key: "x", value: "10" },
+                        { key: "y", value: "60" },
                         { key: "font-size", value: "50" },
                         { key: "fill", value: "#ffffff" },
                         { key: "font-family", value: "sans-serif" },
-                        { key: "content", value: "ABOUTABOUTABOUTABOUTABOUTABOUTABOUTABOUT" },
+                        { key: "content", value: "ABOUTABOUTABOUTABOUTABOUTABOUTABOUT" },
                     ]
                 ],
             }
@@ -465,9 +503,9 @@ function library(type) {
             parent: "none",
             size: { tall: 9 / 10, wide: 8 / 10 },
             event: {
-                generate_resources: { classes: { add: ["detail",], } },
-                click_exit_click_resources: { classes: { add: ["fade-hide"]} },
-                generate_select_resources: { classes: { add: ["none"], } },
+                generate_detail_resources: { type: "generate", classes: { add: ["detail",], } },
+                click_exit_click_resources: { type: "css", classes: { add: ["fade-hide"] } },
+                generate_select_from_detail_resources: { type: "delete", classes: { add: ["none"], } },
             },
             attributes: {
                 svg: [
@@ -509,7 +547,7 @@ function library(type) {
     if (type === "all") {
         return list;
     }
-    else{
+    else {
         return list.filter(obj => obj["event"] && obj["event"].hasOwnProperty(ENV.event));
     }
 
@@ -520,14 +558,8 @@ function library(type) {
 
 function generate_component(component) {
     //the below needs to get wrapped in a FOR LOOP, all SVGs rn - but eventually should take object type into account
-    console.log("COMPONENT IN GENERATE COMPONENT")
-    console.log(component)
     var classes = component.event[ENV.event].classes.add
-    console.log("CLASSES")
-    console.log(classes)
-
     var parent = component.parent
-
     var parent_element = document.getElementById(parent);
 
     var div = document.createElement('div');
@@ -544,7 +576,7 @@ function generate_component(component) {
         if (attributes.hasOwnProperty('svg') == true) {
             var list_svg = attributes.svg
             var length_svg = list_svg.length
-    
+
             var svgNS = "http://www.w3.org/2000/svg";
             var svg_app_icon = document.createElementNS(svgNS, "svg");
             for (let i = 0; i < length_svg; i++) {
@@ -564,9 +596,6 @@ function generate_component(component) {
         if (attributes.hasOwnProperty('g') == true) {
             var list_g = attributes.g
             var length_g = list_g.length
-            console.log("LIST OF G ATTRIBUTE GROUPS")
-            console.log(list_g)
-    
             var g = document.createElementNS(svgNS, "g");
             for (let i = 0; i < length_g; i++) {
                 g.setAttributeNS(null, list_g[i].key, list_g[i].value);
@@ -576,7 +605,7 @@ function generate_component(component) {
         if (attributes.hasOwnProperty('paths') == true) {
             var list_paths = attributes.paths
             var length_paths = list_paths.length
-    
+
             for (let i = 0; i < length_paths; i++) {
                 var path = document.createElementNS(svgNS, "path");
                 var list_path = attributes.paths[i]
@@ -597,13 +626,10 @@ function generate_component(component) {
             svg_app_icon.appendChild(circle);
         }
         if (attributes.hasOwnProperty('text') == true) {
-    
+
             var list_text = attributes.text
             var length_text = list_text.length
-    
-            console.log("LIST OF TEXT ATTRIBUTE GROUPS")
-            console.log(list_text)
-    
+
             for (let i = 0; i < length_text; i++) {
                 var text = document.createElementNS(svgNS, "text");
                 var list_text_object = list_text[i]
@@ -611,8 +637,6 @@ function generate_component(component) {
                 for (let i = 0; i < length_text_object; i++) {
                     if (list_text_object[i].key === "content") {
                         //NOTHING
-                        console.log("LIST_TEXT_OBJECT")
-                        console.log(list_text_object)
                         text.textContent = list_text_object[i].value;
                     }
                     else {
@@ -622,9 +646,9 @@ function generate_component(component) {
                 svg_app_icon.appendChild(text);
             }
         }
-    
+
         // END VARIABLE ATTRIBUTES
-    
+
 
     }
 
