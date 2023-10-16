@@ -13,45 +13,37 @@ console.log("please steal, feedback welcome: github.com/cx-iv/simple-static-site
 var ENV = {
     event: "NULL_ON_LOAD",
     metric_classes_accrued: ["classes that get applied are accrued here in event_handler - push classes to this array - animals.push('cows');"],
-    type: {
-        //this is the full list events in the system - architecture here needs to be ~ rethunk ~
-        genesis: "dom",
-        click_about: "css",
-        click_resources: "css",
-        generate_about: "dom",
-        generate_resources: "dom",
-        click_exit_click_resources: "css",
-        click_exit_click_about: "css",
-        generate_select_about: "dom",
-        generate_select_resources: "dom",
-        background_black: "css",
-        background_white: "css",
-        remove_ghost_accent: "dom",
-    },
 };
 
-//need DOM loaded first
-document.addEventListener('DOMContentLoaded', (event) => { event_handler("genesis"); });
 
-//captures animation events
+document.addEventListener('DOMContentLoaded', (event) => { event_handler("genesis"); });
+//need DOM loaded first
+
 document.addEventListener("animationend", (event) => {
-    if (event.animationName === "rotateGenesisSelectExit" && ENV.event === "click_about") {
+    //captures animation events
+    if (event.animationName === "fillWhiteToBlack") {
+        event_handler("select_generated");
+    }
+    else if (event.animationName === "rotateGenesisSelectExit" && ENV.event === "click_about") {
         event_handler("background_black");
-        event_handler("generate_about");
+        event_handler("generate_detail_about");
+        event_handler("exit_generated");
     }
     else if (event.animationName === "rotateGenesisSelectExit" && ENV.event === "click_resources") {
         event_handler("background_black");
-        event_handler("generate_resources");
+        event_handler("generate_detail_resources");
+        event_handler("exit_generated");
     }
     else if (event.animationName === "eraseClickSelectExit" && ENV.event === "click_exit_click_resources") {
-        event_handler("generate_select_resources")
+        event_handler("generate_select_from_detail_resources")
     }
     else if (event.animationName === "eraseClickSelectExit" && ENV.event === "click_exit_click_about") {
-        event_handler("generate_select_about")
+        event_handler("generate_select_from_detail_about")
     }
     else if (event.animationName === "expandFillPageGhost") {
         event_handler("background_white");
         event_handler("remove_ghost_accent");
+        event_handler("select_generated");
     }
 
 });
@@ -61,69 +53,47 @@ window.onresize = dimension_update;
 function event_handler(event) {
     console.log("EVENT JUST RAN")
     console.log(event)
-
     console.log(ENV)
     ENV.event = event;
 
-    var components_lib_event = library()
-    console.log("LIST_LIB_EVENT_COMPONENTS")
-    console.log(components_lib_event)
+    var components_event = library()
 
-    var list_dom = Array.from(document.querySelectorAll('div[id]')).map(div => ({ title: div.id }))
-    console.log("LIST_DOM")
-    console.log(list_dom)
+    list_css = components_event.filter(item => item.event[event].type === "css");
+    list_delete = components_event.filter(item => item.event[event].type === "delete");
+    list_generate = components_event.filter(item => item.event[event].type === "generate");
 
-    list_generate = joins("not_on_dom", { array_lib: components_lib_event, array_dom: list_dom, key_value: "title" });
-    console.log("LIST_GENERATE")
+    console.log("LISTS: CSS,DELETE,GENERATE")
+    console.log(list_css)
+    console.log(list_delete)
     console.log(list_generate)
 
-    list_existing_elements = joins("overlap", { array_base: components_lib_event, array_dom: list_dom, key_value: "title" });
-    console.log("LIST_list_existing_elements")
-    console.log(list_existing_elements)
 
-
-    length_list_existing_elements = list_existing_elements.length
-
-    if (ENV.type[event] === "css") {
-        //APPLY CLASSES
-        console.log("APPLY CLASSES")
-        for (let i = 0; i < length_list_existing_elements; i++) {
-            //APPEND HERE - metric_classes_accrued
-            ENV.metric_classes_accrued.push(list_existing_elements[i].event[event].classes.add)
-            console.log("*******RELEVANT*******")
-            console.log(list_existing_elements[i].event[event].classes)
-
-            //REMOVE CLASSES
-            if (list_existing_elements[i].event[event].classes.hasOwnProperty("remove")) {
-                console.log("REMOVE THESE CLASSES")
-                console.log(list_existing_elements[i].event[event].classes.remove)
-                console.log("FROM THIS DIV")
-                console.log(list_existing_elements[i].title)
-                list_existing_elements[i].event[event].classes.remove.forEach(className => {
-                    document.getElementById(list_existing_elements[i].title).classList.remove(className);
-                });
-            }
-            //ADD CLASSES
-            console.log("ADD CLASSES")
-            list_existing_elements[i].event[event].classes.add.forEach(className => {
-                document.getElementById(list_existing_elements[i].title).classList.add(className);
+    //APPLY CLASSES
+    length_css = list_css.length
+    for (let i = 0; i < length_css; i++) {
+        //APPEND HERE - metric_classes_accrued
+        ENV.metric_classes_accrued.push(list_css[i].event[event].classes.add)
+        //REMOVE CLASSES
+        if (list_css[i].event[event].classes.hasOwnProperty("remove")) {
+            list_css[i].event[event].classes.remove.forEach(className => {
+                document.getElementById(list_css[i].title).classList.remove(className);
             });
         }
+        //ADD CLASSES
+        list_css[i].event[event].classes.add.forEach(className => {
+            document.getElementById(list_css[i].title).classList.add(className);
+        });
     }
-    else if (ENV.type[event] === "dom") {
-        //REMOVE COMPONENTS
-        console.log("REMOVE COMPONENTS")
-        console.log(list_existing_elements)
-        for (let i = 0; i < length_list_existing_elements; i++) {
-            console.log("COMPONENT-TO-BE-REMOVED")
-            console.log(list_existing_elements[i])
-            document.getElementById(list_existing_elements[i].title).remove();
-        }
+
+    //REMOVE COMPONENTS
+    length_delete = list_delete.length
+    for (let i = 0; i < length_delete; i++) {
+        document.getElementById(list_delete[i].title).remove();
     }
+
     //GENERATE COMPONENTS
     length_generate = list_generate.length
     for (let i = 0; i < length_generate; i++) {
-        console.log("GENERATE COMPONENTS")
         generate_component(list_generate[i]);
     }
 
@@ -138,20 +108,17 @@ function dimension_update() {
     var w = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0)
     var h = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0)
     var components = library("all")
+
     //LIST OF ITEMS ON DOM
     var list_dom = Array.from(document.querySelectorAll('div[id]')).map(div => ({ title: div.id }))
-    //FILTER OUT ONLY OBJECTS ON DOM
+    //PULL FULL LIBRARY + FILTER OUT ONLY OBJECTS ON DOM
     components = joins("overlap", { array_base: components, array_dom: list_dom, key_value: "title" });
-
     //FILTER OUT CHILD COMMPONENTS - size determiend by parents
     components = components.filter(obj => obj["parent"] === "none");
     //FILTER OUT static size components like "background"
     components = components.filter(obj => obj.hasOwnProperty("size"));
 
     length_components = components.length;
-    console.log("COMPONENTS IN DIMENSION_UPDATE")
-    console.log(components)
-
     for (let i = 0; i < length_components; i++) {
 
         if (h > w) {
@@ -168,28 +135,29 @@ function dimension_update() {
     }
 };
 
-//EVENTUALLY THE LIBRARY COUL DBE EXCEL SHEET UPDATED
 function library(type) {
-//library of components and their respetive classes for events
-//the order of componenets matters here - parents must come first
+    //library of components and their respetive classes for events
+    //the order of componenets matters here - parents must come first
+    //EVENTUALLY THE LIBRARY COULD BE EXCEL SHEET UPDATED - would need to update the CSS file als - different JS job for both
+
     var list = [
         {
             title: "background",
-            notes:"size is not dynamic and just set to 100% by the 'background' CSS property",
+            notes: "size is not dynamic and just set to 100% by the 'background' CSS property",
             parent: "none",
             event: {
-                genesis: { classes: { add: ["background","background-white"] }, },
-                background_black: { classes: { add: ["background-black"], remove: ["background-white"]  } },
-                background_white: { classes: { add: ["background-white"], remove: ["background-black"]  } },
+                genesis: { type: "generate", classes: { add: ["background", "background-white"] }, },
+                background_black: { type: "css", classes: { add: ["background-black"], remove: ["background-white"] } },
+                background_white: { type: "css", classes: { add: ["background-white"], remove: ["background-black"] } },
             },
         },
         {
             title: "accent_app",
-            notes:"this is for the diopside app",
+            notes: "this is for the diopside app",
             parent: "none",
-            size: { tall: 5 / 10, wide: 4 / 10 },
+            size: { tall: 2 / 10, wide: 2 / 10 },
             event: {
-                genesis: { classes: { add: ["accent-icon"] }, },
+                genesis: { type: "generate", classes: { add: ["accent-icon"] }, },
             },
             attributes: {
                 svg: [
@@ -201,7 +169,7 @@ function library(type) {
                 circle: [
                     { key: "cx", value: "0" },
                     { key: "cy", value: "0" },
-                    { key: "r", value: "800" },
+                    { key: "r", value: "1200" },
                     { key: "fill", value: "#ffffff" },
                 ],
             },
@@ -209,9 +177,8 @@ function library(type) {
         {
             title: "app",
             parent: "accent_app",
-            size: { tall: 1.5 / 10, wide: 2 / 10 },
             event: {
-                genesis: { classes: { add: ["icon"] } },
+                genesis: { type: "generate", classes: { add: ["icon"] } },
             },
             attributes: {
                 svg: [
@@ -240,13 +207,13 @@ function library(type) {
             parent: "none",
             size: { tall: 9 / 10, wide: 7 / 10 },
             event: {
-                genesis: { classes: { add: ["accent-select", "genesis-accent-select"], }, },
-                click_about: { classes: { add: ["expand-fill-page"], remove: ["exit-animation-select-accent"]} },
-                click_resources: { classes: { add: ["expand-fill-page"], remove: ["exit-animation-select-accent"]} },
-                generate_about: { classes: { add: ["none"], }, },
-                generate_resources: { classes: { add: ["none"], }, },
-                generate_select_about: { classes: { add: ["accent-select-post-exit"], }, },
-                generate_select_resources: { classes: { add: ["accent-select-post-exit"], }, },
+                genesis: { type: "generate", classes: { add: ["accent-select", "genesis-accent-select"], }, },
+                click_about: { type: "css", classes: { add: ["expand-fill-page"], remove: ["exit-animation-select-accent"] } },
+                click_resources: { type: "css", classes: { add: ["expand-fill-page"], remove: ["exit-animation-select-accent"] } },
+                generate_detail_about: { type: "delete", },
+                generate_detail_resources: { type: "delete", },
+                generate_select_from_detail_resources: { type: "generate", classes: { add: ["accent-select-post-exit"], }, },
+                generate_select_from_detail_about: { type: "generate", classes: { add: ["accent-select-post-exit"], }, },
             },
             attributes: {
                 svg: [
@@ -285,9 +252,9 @@ function library(type) {
             parent: "none",
             size: { tall: 9 / 10, wide: 7 / 10 },
             event: {
-                generate_select_about: { classes: { add: ["genesis-ghost-accent-select"], }, },
-                generate_select_resources: { classes: { add: ["genesis-ghost-accent-select"], }, },
-                remove_ghost_accent: { classes: { add: ["none"], }, },
+                generate_select_from_detail_resources: { type: "generate", classes: { add: ["genesis-ghost-accent-select"], }, },
+                generate_select_from_detail_about: { type: "generate", classes: { add: ["genesis-ghost-accent-select"], }, },
+                remove_ghost_accent: { type: "delete", },
             },
             attributes: {
                 svg: [
@@ -327,11 +294,12 @@ function library(type) {
             parent: "accent_select",
             size: "ABSOLUTE_DRIVEN_BY_PARENT",
             event: {
-                genesis: { classes: { add: ["select-resources", "highlight"], } },
-                click_about: { classes: { add: ["disabled","animate-erase"],remove: ["highlight","animate-draw"] } },
-                click_resources: { classes: { add: ["disabled","animate-clicked",],remove: ["highlight","animate-draw"] } },
-                generate_select_about: { classes: { add: ["select-resources","animate-draw","highlight"], } },
-                generate_select_resources: { classes: { add: ["select-resources","animate-draw","highlight"], } },
+                genesis: { type: "generate", classes: { add: ["select-resources", "disabled"], } },
+                select_generated: { type: "css", classes: { add: ["highlight"], remove: ["disabled"] } },
+                click_about: { type: "css", classes: { add: ["disabled", "animate-erase"], remove: ["highlight", "animate-draw"] } },
+                click_resources: { type: "css", classes: { add: ["disabled", "animate-clicked",], remove: ["highlight", "animate-draw"] } },
+                generate_select_from_detail_resources: { type: "generate", classes: { add: ["disabled", "select-resources", "animate-draw", "highlight"], } },
+                generate_select_from_detail_about: { type: "generate", classes: { add: ["disabled", "select-resources", "animate-draw", "highlight"], } },
             },
             attributes: {
                 svg: [
@@ -369,11 +337,12 @@ function library(type) {
             parent: "accent_select",
             size: "ABSOLUTE_DRIVEN_BY_PARENT",
             event: {
-                genesis: { classes: { add: ["select-about","highlight"], } },
-                click_about: { classes: { add: ["disabled","animate-clicked"],remove: ["highlight","animate-draw"] } },
-                click_resources: { classes: { add: ["disabled","animate-erase"],remove: ["highlight","animate-draw"] } },
-                generate_select_about: { classes: { add: ["select-about","animate-draw","highlight"], } },
-                generate_select_resources: { classes: { add: ["select-about","animate-draw","highlight"], } },
+                genesis: { type: "generate", classes: { add: ["select-about", "disabled"], } },
+                select_generated: { type: "css", classes: { add: ["highlight"], remove: ["disabled"] } },
+                click_about: { type: "css", classes: { add: ["disabled", "animate-clicked"], remove: ["highlight", "animate-draw"] } },
+                click_resources: { type: "css", classes: { add: ["disabled", "animate-erase"], remove: ["highlight", "animate-draw"] } },
+                generate_select_from_detail_resources: { type: "generate", classes: { add: ["disabled", "select-about", "animate-draw", "highlight"], } },
+                generate_select_from_detail_about: { type: "generate", classes: { add: ["disabled", "select-about", "animate-draw", "highlight"], } },
             },
             attributes: {
                 svg: [
@@ -431,12 +400,13 @@ function library(type) {
             parent: "none",
             size: { tall: 2 / 10, wide: 1.5 / 10 },
             event: {
-                click_about: { classes: { add: ["select-exit","genesis-select-exit","highlight"] } },
-                click_resources: { classes: { add: ["select-exit","genesis-select-exit","highlight"] } },
-                click_exit_click_about: { classes: { add: ["disabled","click-select-exit"], remove: ["highlight","genesis-select-exit"] } },
-                click_exit_click_resources: { classes: { add: ["disabled","click-select-exit"], remove: ["highlight","genesis-select-exit"] } },
-                generate_select_about: { classes: { add: ["none"], } },
-                generate_select_resources: { classes: { add: ["none"], } },
+                click_about: { type: "generate", classes: { add: ["disabled", "select-exit", "genesis-select-exit", "highlight"] } },
+                click_resources: { type: "generate", classes: { add: ["disabled", "select-exit", "genesis-select-exit", "highlight"] } },
+                click_exit_click_about: { type: "css", classes: { add: ["disabled", "click-select-exit"], remove: ["highlight", "genesis-select-exit"] } },
+                click_exit_click_resources: { type: "css", classes: { add: ["disabled", "click-select-exit"], remove: ["highlight", "genesis-select-exit"] } },
+                generate_select_from_detail_resources: { type: "delete", },
+                generate_select_from_detail_about: { type: "delete", },
+                exit_generated: { type: "css", classes: { add: ["highlight"], remove: ["disabled"] } },
             },
             attributes: {
                 svg: [
@@ -445,7 +415,7 @@ function library(type) {
                     { key: "version", value: "1.1" },
                     { key: "viewBox", value: "0 0 1200 1200" },
                     { key: "style", value: "cursor:pointer;" },
-                    { key: "onclick", value: "event_handler('click_exit_"+ENV.event+"')" },
+                    { key: "onclick", value: "event_handler('click_exit_" + ENV.event + "')" },
                 ],
                 g: [
                     { key: "stroke", value: "#ffffff" },
@@ -478,9 +448,9 @@ function library(type) {
             parent: "none",
             size: { tall: 9 / 10, wide: 8 / 10 },
             event: {
-                generate_about: { classes: { add: ["detail",], } },
-                click_exit_click_about: { classes: { add: ["fade-hide"]} },
-                generate_select_about: { classes: { add: ["none"], } },
+                generate_detail_about: { type: "generate", classes: { add: ["detail",], } },
+                click_exit_click_about: { type: "css", classes: { add: ["fade-hide"] } },
+                generate_select_from_detail_about: { type: "delete", classes: { add: ["none"], } },
             },
             attributes: {
                 svg: [
@@ -521,9 +491,9 @@ function library(type) {
             parent: "none",
             size: { tall: 9 / 10, wide: 8 / 10 },
             event: {
-                generate_resources: { classes: { add: ["detail",], } },
-                click_exit_click_resources: { classes: { add: ["fade-hide"]} },
-                generate_select_resources: { classes: { add: ["none"], } },
+                generate_detail_resources: { type: "generate", classes: { add: ["detail",], } },
+                click_exit_click_resources: { type: "css", classes: { add: ["fade-hide"] } },
+                generate_select_from_detail_resources: { type: "delete", classes: { add: ["none"], } },
             },
             attributes: {
                 svg: [
@@ -565,7 +535,7 @@ function library(type) {
     if (type === "all") {
         return list;
     }
-    else{
+    else {
         return list.filter(obj => obj["event"] && obj["event"].hasOwnProperty(ENV.event));
     }
 
@@ -576,14 +546,8 @@ function library(type) {
 
 function generate_component(component) {
     //the below needs to get wrapped in a FOR LOOP, all SVGs rn - but eventually should take object type into account
-    console.log("COMPONENT IN GENERATE COMPONENT")
-    console.log(component)
     var classes = component.event[ENV.event].classes.add
-    console.log("CLASSES")
-    console.log(classes)
-
     var parent = component.parent
-
     var parent_element = document.getElementById(parent);
 
     var div = document.createElement('div');
@@ -600,7 +564,7 @@ function generate_component(component) {
         if (attributes.hasOwnProperty('svg') == true) {
             var list_svg = attributes.svg
             var length_svg = list_svg.length
-    
+
             var svgNS = "http://www.w3.org/2000/svg";
             var svg_app_icon = document.createElementNS(svgNS, "svg");
             for (let i = 0; i < length_svg; i++) {
@@ -620,9 +584,6 @@ function generate_component(component) {
         if (attributes.hasOwnProperty('g') == true) {
             var list_g = attributes.g
             var length_g = list_g.length
-            console.log("LIST OF G ATTRIBUTE GROUPS")
-            console.log(list_g)
-    
             var g = document.createElementNS(svgNS, "g");
             for (let i = 0; i < length_g; i++) {
                 g.setAttributeNS(null, list_g[i].key, list_g[i].value);
@@ -632,7 +593,7 @@ function generate_component(component) {
         if (attributes.hasOwnProperty('paths') == true) {
             var list_paths = attributes.paths
             var length_paths = list_paths.length
-    
+
             for (let i = 0; i < length_paths; i++) {
                 var path = document.createElementNS(svgNS, "path");
                 var list_path = attributes.paths[i]
@@ -653,13 +614,10 @@ function generate_component(component) {
             svg_app_icon.appendChild(circle);
         }
         if (attributes.hasOwnProperty('text') == true) {
-    
+
             var list_text = attributes.text
             var length_text = list_text.length
-    
-            console.log("LIST OF TEXT ATTRIBUTE GROUPS")
-            console.log(list_text)
-    
+
             for (let i = 0; i < length_text; i++) {
                 var text = document.createElementNS(svgNS, "text");
                 var list_text_object = list_text[i]
@@ -667,8 +625,6 @@ function generate_component(component) {
                 for (let i = 0; i < length_text_object; i++) {
                     if (list_text_object[i].key === "content") {
                         //NOTHING
-                        console.log("LIST_TEXT_OBJECT")
-                        console.log(list_text_object)
                         text.textContent = list_text_object[i].value;
                     }
                     else {
@@ -678,9 +634,9 @@ function generate_component(component) {
                 svg_app_icon.appendChild(text);
             }
         }
-    
+
         // END VARIABLE ATTRIBUTES
-    
+
 
     }
 

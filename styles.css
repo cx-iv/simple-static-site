@@ -21,9 +21,9 @@ body {
 .icon {
   position: absolute;
   z-index: 1;
-  height: 40%;
-  top: 25%;
-  left: 25%;
+  width: 70%;
+  top: 40%;
+  left: 40%;
   transform: translate(-50%, -50%);
 }
 
@@ -70,7 +70,7 @@ body {
 
 .genesis-ghost-select {
   fill:#ffffff;
-  animation: draw 0.9s, fillWhiteToBlack 0.5s 0.8s forwards;
+  animation: draw 0.9s;
 }
 
 @keyframes fillWhiteToBlack {
