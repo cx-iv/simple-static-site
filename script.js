@@ -482,19 +482,52 @@ function library(type) {
                         { key: "id", value: "path_one" },
                         { key: "stroke-width", value: "0" },
                         { key: "fill", value: "#ffffff" },
-                        { key: "transform", value: "translate(-1000 500) scale(2)" },
+                        { key: "transform", value: "translate(-2500 600) scale(3.5)" },
                         { key: "stroke", value: "#ffffff" },
                     ],
                 ],
                 text: [
                     [
                         { key: "x", value: "10" },
-                        { key: "y", value: "60" },
+                        { key: "y", value: "100" },
+                        { key: "font-size", value: "125" },
+                        { key: "fill", value: "#ffffff" },
+                        { key: "font-family", value: "sans-serif" },
+                        { key: "content", value: "diopside is a project" },
+                    ],
+                    [
+                        { key: "x", value: "10" },
+                        { key: "y", value: "225" },
                         { key: "font-size", value: "50" },
                         { key: "fill", value: "#ffffff" },
                         { key: "font-family", value: "sans-serif" },
-                        { key: "content", value: "ABOUTABOUTABOUTABOUTABOUTABOUTABOUT" },
-                    ]
+                        { key: "content", value: "diopside is a mineral, and diopsi.de conforms" },
+                    ],
+                    [
+                        { key: "x", value: "10" },
+                        { key: "y", value: "275" },
+                        { key: "font-size", value: "50" },
+                        { key: "fill", value: "#ffffff" },
+                        { key: "font-family", value: "sans-serif" },
+                        { key: "content", value: "with the affordable TLD (.de)" },
+                    ],
+
+                    // [
+                    //     { key: "x", value: "10" },
+                    //     { key: "y", value: "120" },
+                    //     { key: "font-size", value: "50" },
+                    //     { key: "fill", value: "#ffffff" },
+                    //     { key: "font-family", value: "sans-serif" },
+                    //     { key: "content", value: [
+                    //         [
+                    //             {key:"href",value:"https://github.com/cx-iv/simple-static-site"},
+                    //             {key:"class",value:"highlight-green"},
+                    //             {key:"target",value:"_blank"},
+                    //             {key:"content",value:"THISSHOULDBECLICKABLE"},
+                    //         ],
+                    //     ] },
+                    // ]
+
                 ],
             }
         },
@@ -515,29 +548,28 @@ function library(type) {
                     { key: "viewBox", value: "0 0 1200 1200" },
                 ],
                 g: [
-                    { key: "stroke", value: "#7D7D7D" },
-                    { key: "stroke-width", value: "5" },
                     { key: "stroke-dasharray", value: 1 },
-                    { key: "transform", value: "rotate(270,800,800)" },
                 ],
-                // paths: [
-                //     [
-                //         {
-                //             key: "d",
-                //             value: "m852.68 546.56c-2.3242-0.97656-57.148-23.852-124.01-23.852-49.5 0-93.148 12.227-129.71 36.336-21.148 13.949-38.176 30.789-52.051 48.938 3.2266-122.36 34.613-245.7 118.73-346.57 3.3008 24.336 12.824 51.863 37.688 73.426 56.625 49.199 134.1 17.176 134.1 17.176s20.887-81.227-35.738-130.39c-21.375-18.562-45.676-25.539-67.688-27.039 21.824-17.625 45.523-34.312 72.148-49.539 17.961-10.273 24.227-33.188 13.949-51.148-10.238-17.961-33.148-24.227-51.148-13.949-108.75 62.137-180.64 142.57-226.65 231.49-11.926-29.438-29.773-58.539-57-82.914-42.68-38.137-101.63-58.273-170.41-58.273-44.176 0-77.398 8.4766-78.789 8.8125-14.66 3.75-25.609 16.012-27.711 31.012-0.89844 6.2617-20.812 154.73 76.875 242.1 42.637 38.176 101.55 58.312 170.32 58.312 8.7734 0 16.949-0.375 24.676-0.9375-14.852 103.12-7.8359 208.16 8.7734 303.75-62.809-30.488-127.84 11.699-127.84 11.699s-5.0234 83.699 59.926 121.2c36.148 20.852 73.426 15.676 99.75 7.0859 37.012 131.81 81.75 223.31 83.062 225.98 6.6016 13.164 19.836 20.738 33.602 20.738 5.625 0 11.363-1.2734 16.727-3.9375 18.523-9.2617 26.023-31.801 16.762-50.324-1.5391-3.0742-65.961-134.89-101.55-306.6 18.938 3.7891 41.062 6.7109 64.914 6.7109 49.5 0 93.148-12.227 129.75-36.375 109.39-72.148 111.41-221.89 111.45-228.23 0.074218-15.109-9.0039-28.797-22.914-34.684zm-517.43-150.34c-47.438-42.414-54.262-111.38-54.074-149.02 9.4883-1.0898 21-1.9531 33.711-1.9531 34.914 0 84.113 6.7891 120.38 39.188 47.398 42.414 54.262 111.38 54.074 149.02-9.4883 1.125-21.039 1.9883-33.711 1.9883-34.914 0-84.148-6.7852-120.38-39.223zm387.56 350.66c-24.113 15.898-53.887 24-88.426 24-27.074 0-51.938-4.9883-69.449-9.7109 5.3633-37.312 22.199-104.48 75.301-139.5 24.148-15.898 53.887-23.961 88.426-23.961 27.074 0 51.977 4.9883 69.449 9.7109-5.3242 37.273-22.199 104.44-75.301 139.46z"
-                //         },
-                //         { key: "pathLength", value: 1 },
-                //         { key: "id", value: "path_one" },
-                //     ],
-                // ],
+                paths: [
+                    [
+                        {
+                            key: "d",
+                            value: "M0,0 L1200,0 L1200,1200 L0,1200 L0,0"
+                        },
+                        { key: "pathLength", value: 1 },
+                        { key: "id", value: "path_square" },
+                        { key: "stroke-width", value: "10" },
+                        { key: "stroke", value: "#ffffff" },
+                    ],
+                ],
                 text: [
                     [
-                        { key: "x", value: "50" },
-                        { key: "y", value: "100" },
+                        { key: "x", value: "10" },
+                        { key: "y", value: "60" },
                         { key: "font-size", value: "50" },
                         { key: "fill", value: "#ffffff" },
                         { key: "font-family", value: "sans-serif" },
-                        { key: "content", value: "RESOURCESRESOURCESRESOURCESRESOURCESRESOURCESRESOURCESRESOURCES" },
+                        { key: "content", value: "RESOURCESRESOURCESRESOURCESRESOUR" },
                     ]
                 ],
             }

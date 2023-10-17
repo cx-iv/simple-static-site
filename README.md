@@ -5,14 +5,12 @@ this is a [simple-static-site](https://diopsi.de/) you can host with an [object-
 
 ## 📓 about 📓
 
-purely a project for the hell of it - but i do intend to build on the base "library" component of this site
+this site is driven by four functions and a library that details + orchestrates all generation, css, and deletion events
 
-this site is driven by four functions and a library that details how to handle all generation, events, etc.
-
-this site could be built through a spreadsheet configuration that defines CSS classes and the "library" component
+i intend to build on the base "library" component of this site such that it may be fully configured via a CSV file - if you want to do this please let me know
 
 ## 🛠️ implementation 🛠️
 
 throw it in an S3 bucket
 
-reach out to linkedin.com/in/cxiv/ with any questions
+reach out on linkedin.com/in/cxiv/
