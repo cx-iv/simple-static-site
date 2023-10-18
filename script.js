@@ -483,6 +483,7 @@ function library(type) {
                         },
                         { key: "pathLength", value: 1 },
                         { key: "id", value: "path_L" },
+                        { key: "parent", value: "anchor_linkedin_button" },
                         { key: "stroke-width", value: "0" },
                         { key: "fill", value: "#ffffff" },
                         { key: "transform", value: "translate(-600 500) scale(3)" },
@@ -495,6 +496,7 @@ function library(type) {
                         },
                         { key: "pathLength", value: 1 },
                         { key: "id", value: "path_i" },
+                        { key: "parent", value: "anchor_linkedin_button" },
                         { key: "stroke-width", value: "0" },
                         { key: "fill", value: "#ffffff" },
                         { key: "transform", value: "translate(-858 505.5) scale(3)" },
@@ -506,6 +508,7 @@ function library(type) {
                             value: "M379.2,144.337h9.219v4.225h.131a10.085,10.085,0,0,1,9.09-4.994c9.735,0,11.527,6.405,11.527,14.726v16.954h-9.6V160.217c0-3.588-.066-8.2-5-8.2-4.99,0-5.76,3.907-5.76,7.939v15.288h-9.6Z"
                         },
                         { key: "pathLength", value: 1 },
+                        { key: "parent", value: "anchor_linkedin_button" },
                         { key: "id", value: "path_n" },
                         { key: "stroke-width", value: "0" },
                         { key: "fill", value: "#ffffff" },
@@ -518,6 +521,7 @@ function library(type) {
                             value: "M506.953,92.486h9.6v27.265l10.88-12.583h11.77l-12.6,14.313,12.335,16.63H526.872l-10.191-15.282h-.126v15.28h-9.6Z"
                         },
                         { key: "pathLength", value: 1 },
+                        { key: "parent", value: "anchor_linkedin_button" },
                         { key: "id", value: "path_k" },
                         { key: "stroke-width", value: "0" },
                         { key: "fill", value: "#ffffff" },
@@ -530,6 +534,7 @@ function library(type) {
                             value: "M639.93,155.719a5.756,5.756,0,0,0-5.894-5.89,6.406,6.406,0,0,0-6.784,5.89Zm8.132,13.7a16.909,16.909,0,0,1-13.128,6.151c-9.6,0-17.286-6.408-17.286-16.331s7.685-16.328,17.286-16.328c8.973,0,14.6,6.4,14.6,16.328v3.01H627.252a7.171,7.171,0,0,0,7.235,6.019,8.193,8.193,0,0,0,6.851-3.778Z"
                         },
                         { key: "pathLength", value: 1 },
+                        { key: "parent", value: "anchor_linkedin_button" },
                         { key: "id", value: "path_e" },
                         { key: "stroke-width", value: "0" },
                         { key: "fill", value: "#ffffff" },
@@ -543,6 +548,7 @@ function library(type) {
                         },
                         { key: "pathLength", value: 1 },
                         { key: "id", value: "path_d" },
+                        { key: "parent", value: "anchor_linkedin_button" },
                         { key: "stroke-width", value: "0" },
                         { key: "fill", value: "#ffffff" },
                         { key: "transform", value: "translate(-1788 500) scale(3)" },
@@ -554,6 +560,7 @@ function library(type) {
                             value: "M958.98,112.559h-9.6V97.525c0-3.585-.064-8.2-4.993-8.2-5,0-5.765,3.906-5.765,7.939v15.294h-9.6V81.642h9.216v4.225h.129a10.1,10.1,0,0,1,9.093-4.994c9.73,0,11.524,6.4,11.524,14.726ZM918.19,77.416a5.571,5.571,0,1,1,5.57-5.572,5.571,5.571,0,0,1-5.57,5.572m4.8,35.143h-9.61V81.642h9.61Zm40.776-55.2h-55.21a4.728,4.728,0,0,0-4.781,4.67v55.439a4.731,4.731,0,0,0,4.781,4.675h55.21a4.741,4.741,0,0,0,4.8-4.675V62.025a4.738,4.738,0,0,0-4.8-4.67"
                         },
                         { key: "pathLength", value: 1 },
+                        { key: "parent", value: "anchor_linkedin_button" },
                         { key: "id", value: "path_linkedin" },
                         { key: "stroke-width", value: "0" },
                         { key: "fill", value: "#ffffff" },
@@ -566,6 +573,7 @@ function library(type) {
                             value: "M1165,274.515a1.2,1.2,0,0,0,1.21-1.269c0-.9-.543-1.33-1.657-1.33h-1.8v4.712h.677v-2.054h.832l.019.025,1.291,2.029h.724l-1.389-2.1Zm-.783-.472h-.785V272.45h.995c.514,0,1.1.084,1.1.757,0,.774-.593.836-1.314.836"
                         },
                         { key: "pathLength", value: 1 },
+                        { key: "parent", value: "anchor_linkedin_button" },
                         { key: "id", value: "path_copyright_r" },
                         { key: "stroke-width", value: "0" },
                         { key: "fill", value: "#ffffff" },
@@ -577,9 +585,12 @@ function library(type) {
                             key: "d",
                             value: "M0,730 L780,730 L780,950 L0,950 L0,730"
                         },
+                        { key: "parent", value: "anchor_linkedin_button" },
                         { key: "pathLength", value: 1 },
                         { key: "stroke-width", value: "0" },
                         { key: "stroke", value: "#ffffff" },
+                        { key: "fill", value: "rgba(255, 255, 255, 0)" },
+                        { key: "class", value: "highlight-green" },
                     ],
 
                 ],
@@ -591,7 +602,6 @@ function library(type) {
                         { key: "fill", value: "#ffffff" },
                         { key: "font-family", value: "sans-serif" },
                         { key: "font-weight", value: "bold" },
-                        { key: "parent", value: "none" },
                         { key: "content", value: "diopside is a project" },
                     ],
                     [
@@ -600,7 +610,6 @@ function library(type) {
                         { key: "font-size", value: "59" },
                         { key: "fill", value: "#ffffff" },
                         { key: "font-family", value: "sans-serif" },
-                        { key: "parent", value: "none" },
                         { key: "content", value: "is a mineral, and diopsi.de conforms" },
                     ],
                     [
@@ -609,7 +618,6 @@ function library(type) {
                         { key: "font-size", value: "59" },
                         { key: "fill", value: "#ffffff" },
                         { key: "font-family", value: "sans-serif" },
-                        { key: "parent", value: "none" },
                         { key: "content", value: "with an affordable top-level domain (.de)" },
                     ],
                     [
@@ -618,7 +626,6 @@ function library(type) {
                         { key: "font-size", value: "59" },
                         { key: "fill", value: "#ffffff" },
                         { key: "font-family", value: "sans-serif" },
-                        { key: "parent", value: "none" },
                         { key: "content", value: "this site can be run for pennies a month," },
                     ],
                     [
@@ -627,7 +634,6 @@ function library(type) {
                         { key: "font-size", value: "59" },
                         { key: "fill", value: "#ffffff" },
                         { key: "font-family", value: "sans-serif" },
-                        { key: "parent", value: "none" },
                         { key: "content", value: " ; we can show you how" },
                     ],
                     [
@@ -637,7 +643,6 @@ function library(type) {
                         { key: "fill", value: "#ffffff" },
                         { key: "font-family", value: "sans-serif" },
                         { key: "font-weight", value: "bold" },
-                        { key: "parent", value: "none" },
                         { key: "content", value: "say hello on:" },
                     ],
                     [
@@ -680,10 +685,8 @@ function library(type) {
                 [
                     { key: "id", value: "anchor_linkedin_button" },
                     { key: "href", value: "https://www.linkedin.com/in/cxiv/" },
-                    { key: "id", value: "anchor_linkedin_button_background" },
-                    { key: "class", value: "highlight-green" },
-                    { key: "fill", value: "rgba(255, 255, 255, 0)" },
                     { key: "target", value: "_blank" },
+                    { key: "class", value: "highlight-green" },
                 ],
 
 
@@ -855,6 +858,7 @@ function generate_component(component) {
             for (let i = 0; i < length_svg; i++) {
                 svg_object.setAttributeNS(null, list_svg[i].key, list_svg[i].value);
             }
+            svg_object.setAttribute("xmlns", "http://www.w3.org/2000/svg");
             div.appendChild(svg_object);
         }
         if (attributes.hasOwnProperty('a') == true) {
@@ -911,10 +915,24 @@ function generate_component(component) {
                 var path = document.createElementNS(svgNS, "path");
                 var list_path = attributes.paths[i]
                 var length_path = list_path.length
+                var anchor_parent_id = "SKIP"
+
                 for (let i = 0; i < length_path; i++) {
-                    path.setAttributeNS(null, list_path[i].key, list_path[i].value);
+                    if (list_path[i].key === "parent") {
+                        anchor_parent_id = list_path[i].value;
+                    }
+                    else {
+                        path.setAttributeNS(null, list_path[i].key, list_path[i].value);
+                    }
+
                 }
-                g.appendChild(path);
+                if (anchor_parent_id === "SKIP") {
+                    g.appendChild(path);
+                }
+                else {
+                    anchor_object = a_array.filter(item => item.anchor_id === anchor_parent_id)[0].anchor_value
+                    anchor_object.appendChild(path);
+                     }                
             }
         }
         if (attributes.hasOwnProperty('circle') == true) {
@@ -935,22 +953,14 @@ function generate_component(component) {
                 var text = document.createElementNS(svgNS, "text");
                 var list_text_object = list_text[i]
                 var length_text_object = list_text_object.length
+                var anchor_parent_id = "SKIP"
 
                 for (let i = 0; i < length_text_object; i++) {
                     if (list_text_object[i].key === "content") {
                         text.textContent = list_text_object[i].value;
                     }
                     else if (list_text_object[i].key === "parent") {
-                        //dddd
-                        if (list_text_object[i].value === "none") {
-                            anchor_parent_id = "SKIP"
-                        }
-                        else {
-                            console.log("PARENT ELEMENT IN TEXT GENERATION")
-                            console.log(list_text_object[i].value)
-                            console.log(a_array)
                             anchor_parent_id = list_text_object[i].value                            
-                        }
                     }
                     else {
                         text.setAttributeNS(null, list_text_object[i].key, list_text_object[i].value);
@@ -958,13 +968,10 @@ function generate_component(component) {
                 }
 
                 if (anchor_parent_id === "SKIP") {
-                    anchor_parent_id = "SKIP"
                     svg_object.appendChild(text);
                 }
                 else {
                     anchor_object = a_array.filter(item => item.anchor_id === anchor_parent_id)[0].anchor_value
-                    console.log("ANCHOR VALUE OBJECT")
-                    console.log(anchor_object)
                     anchor_object.appendChild(text);
                      }                
             }
