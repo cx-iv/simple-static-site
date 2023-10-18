@@ -731,19 +731,6 @@ function library(type) {
                     //     { key: "stroke-width", value: "10" },
                     //     { key: "stroke", value: "#ffffff" },
                     // ],
-                    [
-                        {
-                            key: "d",
-                            value: "M0,730 L780,730 L780,950 L0,950 L0,730"
-                        },
-                        { key: "parent", value: "anchor_linkedin_button" },
-                        { key: "pathLength", value: 1 },
-                        { key: "stroke-width", value: "0" },
-                        { key: "stroke", value: "#ffffff" },
-                        { key: "fill", value: "rgba(255, 255, 255, 0)" },
-                        { key: "class", value: "highlight-green" },
-                    ],
-
                 ],
                 text: [
                     [
@@ -775,7 +762,33 @@ function library(type) {
                         { key: "fill", value: "#ffffff" },
                         { key: "text-decoration", value: "underline" },
                         { key: "class", value: "highlight-green" },
-                        { key: "content", value: "S3, blob, cloudfront" },
+                        { key: "content", value: "S3," },
+                    ],
+                    [
+                        { key: "id", value: "resource_blob" },
+                        { key: "parent", value: "anchor_blob" },
+                        { key: "x", value: "180" },
+                        { key: "y", value: "335" },
+                        { key: "font-size", value: "100" },
+                        { key: "font-weight", value: "lighter" },
+                        { key: "font-family", value: "sans-serif" },
+                        { key: "fill", value: "#ffffff" },
+                        { key: "text-decoration", value: "underline" },
+                        { key: "class", value: "highlight-green" },
+                        { key: "content", value: "blob," },
+                    ],
+                    [
+                        { key: "id", value: "resource_cloudflare" },
+                        { key: "parent", value: "anchor_cloudflare" },
+                        { key: "x", value: "430" },
+                        { key: "y", value: "335" },
+                        { key: "font-size", value: "100" },
+                        { key: "font-weight", value: "lighter" },
+                        { key: "font-family", value: "sans-serif" },
+                        { key: "fill", value: "#ffffff" },
+                        { key: "text-decoration", value: "underline" },
+                        { key: "class", value: "highlight-green" },
+                        { key: "content", value: "cloudflare" },
                     ],
                     [
                         { key: "x", value: "10" },
@@ -787,13 +800,40 @@ function library(type) {
                         { key: "content", value: "manage information + automate work:" },
                     ],
                     [
+                        
+                        { key: "parent", value: "anchor_baserow" },
                         { key: "x", value: "10" },
                         { key: "y", value: "565" },
                         { key: "font-size", value: "100" },
                         { key: "font-weight", value: "lighter" },
                         { key: "fill", value: "#ffffff" },
                         { key: "font-family", value: "sans-serif" },
-                        { key: "content", value: "baserow + Make" },
+                        { key: "text-decoration", value: "underline" },
+                        { key: "class", value: "highlight-green" },
+                        { key: "content", value: "baserow" },
+                    ],
+                    [
+                        
+                        { key: "x", value: "410" },
+                        { key: "y", value: "565" },
+                        { key: "font-size", value: "100" },
+                        { key: "font-weight", value: "lighter" },
+                        { key: "fill", value: "#ffffff" },
+                        { key: "font-family", value: "sans-serif" },
+                        { key: "content", value: "+" },
+                    ],
+                    [
+                        
+                        { key: "parent", value: "anchor_make" },
+                        { key: "x", value: "510" },
+                        { key: "y", value: "565" },
+                        { key: "font-size", value: "100" },
+                        { key: "font-weight", value: "lighter" },
+                        { key: "fill", value: "#ffffff" },
+                        { key: "font-family", value: "sans-serif" },
+                        { key: "text-decoration", value: "underline" },
+                        { key: "class", value: "highlight-green" },
+                        { key: "content", value: "Make" },
                     ],
                     [
                         { key: "x", value: "10" },
@@ -805,8 +845,7 @@ function library(type) {
                         { key: "content", value: "rapidly build enterprise apps:" },
                     ],
                     [
-                        { key: "id", value: "site_github" },
-                        { key: "parent", value: "anchor_site_github" },
+                        { key: "parent", value: "anchor_unqork" },
                         { key: "x", value: "10" },
                         { key: "y", value: "795" },
                         { key: "font-size", value: "100" },
@@ -815,7 +854,19 @@ function library(type) {
                         { key: "font-family", value: "sans-serif" },
                         { key: "text-decoration", value: "underline" },
                         { key: "class", value: "highlight-green" },
-                        { key: "content", value: "Unqork, DealCloud" },
+                        { key: "content", value: "Unqork," },
+                    ],
+                    [
+                        { key: "parent", value: "anchor_dealcloud" },
+                        { key: "x", value: "390" },
+                        { key: "y", value: "795" },
+                        { key: "font-size", value: "100" },
+                        { key: "font-weight", value: "lighter" },
+                        { key: "fill", value: "#ffffff" },
+                        { key: "font-family", value: "sans-serif" },
+                        { key: "text-decoration", value: "underline" },
+                        { key: "class", value: "highlight-green" },
+                        { key: "content", value: "DealCloud" },
                     ],
                     [
                         { key: "x", value: "10" },
@@ -827,8 +878,7 @@ function library(type) {
                         { key: "content", value: "contemplate technology:" },
                     ],
                     [
-                        { key: "id", value: "site_github" },
-                        { key: "parent", value: "anchor_site_github" },
+                        { key: "parent", value: "anchor_manna" },
                         { key: "x", value: "10" },
                         { key: "y", value: "1025" },
                         { key: "font-size", value: "100" },
@@ -837,8 +887,21 @@ function library(type) {
                         { key: "font-family", value: "sans-serif" },
                         { key: "text-decoration", value: "underline" },
                         { key: "class", value: "highlight-green" },
-                        { key: "content", value: "manna, the path not taken" },
+                        { key: "content", value: "manna," },
                     ],
+                    [
+                        { key: "parent", value: "anchor_road_not_taken" },
+                        { key: "x", value: "370" },
+                        { key: "y", value: "1025" },
+                        { key: "font-size", value: "100" },
+                        { key: "font-weight", value: "lighter" },
+                        { key: "fill", value: "#ffffff" },
+                        { key: "font-family", value: "sans-serif" },
+                        { key: "text-decoration", value: "underline" },
+                        { key: "class", value: "highlight-green" },
+                        { key: "content", value: "the road not taken" },
+                    ],
+
 
                     
                 ],
@@ -849,18 +912,45 @@ function library(type) {
                     { key: "target", value: "_blank" },
                 ],
                 [
-                    { key: "id", value: "anchor_site_github" },
-                    { key: "href", value: "https://github.com/cx-iv/simple-static-site" },
+                    { key: "id", value: "anchor_blob" },
+                    { key: "href", value: "https://azure.microsoft.com/en-us/products/storage/blobs" },
                     { key: "target", value: "_blank" },
                 ],
                 [
-                    { key: "id", value: "anchor_linkedin_button" },
-                    { key: "href", value: "https://www.linkedin.com/in/cxiv/" },
+                    { key: "id", value: "anchor_cloudflare" },
+                    { key: "href", value: "https://www.cloudflare.com/" },
                     { key: "target", value: "_blank" },
-                    { key: "class", value: "highlight-green" },
                 ],
-
-
+                [
+                    { key: "id", value: "anchor_baserow" },
+                    { key: "href", value: "https://baserow.io/" },
+                    { key: "target", value: "_blank" },
+                ],
+                [
+                    { key: "id", value: "anchor_make" },
+                    { key: "href", value: "https://www.make.com/" },
+                    { key: "target", value: "_blank" },
+                ],
+                [
+                    { key: "id", value: "anchor_unqork" },
+                    { key: "href", value: "https://www.unqork.com/" },
+                    { key: "target", value: "_blank" },
+                ],
+                [
+                    { key: "id", value: "anchor_dealcloud" },
+                    { key: "href", value: "https://www.dealcloud.com/" },
+                    { key: "target", value: "_blank" },
+                ],
+                [
+                    { key: "id", value: "anchor_manna" },
+                    { key: "href", value: "https://marshallbrain.com/manna1" },
+                    { key: "target", value: "_blank" },
+                ],
+                [
+                    { key: "id", value: "anchor_road_not_taken" },
+                    { key: "href", value: "https://cxiv.io/the_road_not_taken.pdf" },
+                    { key: "target", value: "_blank" },
+                ],
                 ],
             }
         },
