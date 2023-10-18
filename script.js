@@ -572,7 +572,15 @@ function library(type) {
                         { key: "transform", value: "translate(-2725 80) scale(3)" },
                         { key: "stroke", value: "#ffffff" },
                     ],
-
+                    [
+                        {
+                            key: "d",
+                            value: "M0,730 L780,730 L780,950 L0,950 L0,730"
+                        },
+                        { key: "pathLength", value: 1 },
+                        { key: "stroke-width", value: "0" },
+                        { key: "stroke", value: "#ffffff" },
+                    ],
 
                 ],
                 text: [
@@ -583,6 +591,7 @@ function library(type) {
                         { key: "fill", value: "#ffffff" },
                         { key: "font-family", value: "sans-serif" },
                         { key: "font-weight", value: "bold" },
+                        { key: "parent", value: "none" },
                         { key: "content", value: "diopside is a project" },
                     ],
                     [
@@ -591,6 +600,7 @@ function library(type) {
                         { key: "font-size", value: "59" },
                         { key: "fill", value: "#ffffff" },
                         { key: "font-family", value: "sans-serif" },
+                        { key: "parent", value: "none" },
                         { key: "content", value: "is a mineral, and diopsi.de conforms" },
                     ],
                     [
@@ -599,6 +609,7 @@ function library(type) {
                         { key: "font-size", value: "59" },
                         { key: "fill", value: "#ffffff" },
                         { key: "font-family", value: "sans-serif" },
+                        { key: "parent", value: "none" },
                         { key: "content", value: "with an affordable top-level domain (.de)" },
                     ],
                     [
@@ -607,14 +618,16 @@ function library(type) {
                         { key: "font-size", value: "59" },
                         { key: "fill", value: "#ffffff" },
                         { key: "font-family", value: "sans-serif" },
+                        { key: "parent", value: "none" },
                         { key: "content", value: "this site can be run for pennies a month," },
                     ],
                     [
-                        { key: "x", value: "180" },
+                        { key: "x", value: "195" },
                         { key: "y", value: "540" },
                         { key: "font-size", value: "59" },
                         { key: "fill", value: "#ffffff" },
                         { key: "font-family", value: "sans-serif" },
+                        { key: "parent", value: "none" },
                         { key: "content", value: " ; we can show you how" },
                     ],
                     [
@@ -624,63 +637,53 @@ function library(type) {
                         { key: "fill", value: "#ffffff" },
                         { key: "font-family", value: "sans-serif" },
                         { key: "font-weight", value: "bold" },
+                        { key: "parent", value: "none" },
                         { key: "content", value: "say hello on:" },
                     ],
                     [
                         { key: "id", value: "diopside_mineral_wikipedia" },
+                        { key: "parent", value: "anchor_diopside_mineral_wikipedia" },
                         { key: "x", value: "10" },
                         { key: "y", value: "280" },
                         { key: "font-size", value: "59" },
                         { key: "font-family", value: "sans-serif" },
+                        { key: "content", value: "diopside" },
+                        { key: "fill", value: "#ffffff" },
+                        { key: "text-decoration", value: "underline" },
+                        { key: "class", value: "highlight-green" },
                     ],
                     [
                         { key: "id", value: "site_github" },
+                        { key: "parent", value: "anchor_site_github" },
                         { key: "x", value: "10" },
                         { key: "y", value: "540" },
                         { key: "font-size", value: "59" },
                         { key: "fill", value: "#ffffff" },
                         { key: "font-family", value: "sans-serif" },
+                        { key: "text-decoration", value: "underline" },
+                        { key: "class", value: "highlight-green" },
+                        { key: "font-weight", value: "bold" },
+                        { key: "content", value: "steal it" },
                     ],
                 ],
                 a: [
-                    [
-                    { key: "type", value: "text" },
-                    { key: "parent", value: "diopside_mineral_wikipedia" },
+                [
+                    { key: "id", value: "anchor_diopside_mineral_wikipedia" },
                     { key: "href", value: "https://en.wikipedia.org/wiki/Diopside" },
-                    { key: "class", value: "highlight-green" },
-                    { key: "fill", value: "#ffffff" },
-                    { key: "text-decoration", value: "underline" },
                     { key: "target", value: "_blank" },
-                    { key: "content", value: "diopside" },
                 ],
                 [
-                    { key: "type", value: "text" },
-                    { key: "parent", value: "site_github" },
+                    { key: "id", value: "anchor_site_github" },
                     { key: "href", value: "https://github.com/cx-iv/simple-static-site" },
-                    { key: "class", value: "highlight-green" },
-                    { key: "fill", value: "#ffffff" },
-                    { key: "text-decoration", value: "underline" },
                     { key: "target", value: "_blank" },
-                    { key: "content", value: "steal it" },
                 ],
                 [
-                    { key: "type", value: "object" },
-                    { key: "parent", value: "g_linkedin_button_background" },
+                    { key: "id", value: "anchor_linkedin_button" },
                     { key: "href", value: "https://www.linkedin.com/in/cxiv/" },
                     { key: "id", value: "anchor_linkedin_button_background" },
                     { key: "class", value: "highlight-green" },
                     { key: "fill", value: "rgba(255, 255, 255, 0)" },
                     { key: "target", value: "_blank" },
-                    { key: "path_object", value: [
-                        {
-                            key: "d",
-                            value: "M0,730 L780,730 L780,950 L0,950 L0,730"
-                        },
-                        { key: "pathLength", value: 1 },
-                        { key: "stroke-width", value: "0" },
-                        { key: "stroke", value: "#ffffff" },
-                    ],
- },
                 ],
 
 
@@ -848,11 +851,39 @@ function generate_component(component) {
             var length_svg = list_svg.length
 
             var svgNS = "http://www.w3.org/2000/svg";
-            var svg_app_icon = document.createElementNS(svgNS, "svg");
+            var svg_object = document.createElementNS(svgNS, "svg");
             for (let i = 0; i < length_svg; i++) {
-                svg_app_icon.setAttributeNS(null, list_svg[i].key, list_svg[i].value);
+                svg_object.setAttributeNS(null, list_svg[i].key, list_svg[i].value);
             }
-            div.appendChild(svg_app_icon);
+            div.appendChild(svg_object);
+        }
+        if (attributes.hasOwnProperty('a') == true) {
+
+            var list_a = attributes.a
+            var length_a = list_a.length
+            var a_array = []
+    
+            for (let i = 0; i < length_a; i++) {
+                var a = document.createElementNS(svgNS, "a");
+                var list_a_object = list_a[i]
+                var length_a_object = list_a_object.length
+    
+                for (let i = 0; i < length_a_object; i++) {
+                    if (list_a_object[i].key === "content") {
+                        //NOTHING
+                        a.textContent = list_a_object[i].value;
+                    }
+                    else {
+                        a.setAttributeNS(null, list_a_object[i].key, list_a_object[i].value);
+                    }
+                }
+
+                //array for reference later when getting elements into their respective anchor tags
+                a_array.push({anchor_id:list_a_object.filter(item => item.key === "id")[0].value,anchor_value:a})
+                svg_object.appendChild(a);
+               //GENERATE PATH AND ADD TO ANCHOR NOW
+  
+            }
         }
         if (attributes.hasOwnProperty('rect') == true) {
             var list_rect = attributes.rect
@@ -861,7 +892,7 @@ function generate_component(component) {
             for (let i = 0; i < length_rect; i++) {
                 rect.setAttributeNS(null, list_rect[i].key, list_rect[i].value);
             }
-            svg_app_icon.appendChild(rect);
+            svg_object.appendChild(rect);
         }
         if (attributes.hasOwnProperty('g') == true) {
             var list_g = attributes.g
@@ -870,7 +901,7 @@ function generate_component(component) {
             for (let i = 0; i < length_g; i++) {
                 g.setAttributeNS(null, list_g[i].key, list_g[i].value);
             }
-            svg_app_icon.appendChild(g);
+            svg_object.appendChild(g);
         }
         if (attributes.hasOwnProperty('paths') == true) {
             var list_paths = attributes.paths
@@ -893,7 +924,7 @@ function generate_component(component) {
             for (let i = 0; i < length_circle; i++) {
                 circle.setAttributeNS(null, list_circle[i].key, list_circle[i].value);
             }
-            svg_app_icon.appendChild(circle);
+            svg_object.appendChild(circle);
         }
         if (attributes.hasOwnProperty('text') == true) {
 
@@ -907,19 +938,38 @@ function generate_component(component) {
 
                 for (let i = 0; i < length_text_object; i++) {
                     if (list_text_object[i].key === "content") {
-                        //NOTHING
                         text.textContent = list_text_object[i].value;
+                    }
+                    else if (list_text_object[i].key === "parent") {
+                        //dddd
+                        if (list_text_object[i].value === "none") {
+                            anchor_parent_id = "SKIP"
+                        }
+                        else {
+                            console.log("PARENT ELEMENT IN TEXT GENERATION")
+                            console.log(list_text_object[i].value)
+                            console.log(a_array)
+                            anchor_parent_id = list_text_object[i].value                            
+                        }
                     }
                     else {
                         text.setAttributeNS(null, list_text_object[i].key, list_text_object[i].value);
                     }
                 }
-                svg_app_icon.appendChild(text);
-                
+
+                if (anchor_parent_id === "SKIP") {
+                    anchor_parent_id = "SKIP"
+                    svg_object.appendChild(text);
+                }
+                else {
+                    anchor_object = a_array.filter(item => item.anchor_id === anchor_parent_id)[0].anchor_value
+                    console.log("ANCHOR VALUE OBJECT")
+                    console.log(anchor_object)
+                    anchor_object.appendChild(text);
+                     }                
             }
         }
     }
-
 
     if (parent === "none") {
         document.body.appendChild(div);
@@ -930,63 +980,6 @@ function generate_component(component) {
         parent_element.appendChild(div);
     }
 
-    //ANCHORS ADDED AFTER GENERATION
-    if (component.hasOwnProperty('attributes') == true) {
-        var attributes = component.attributes
-        if (attributes.hasOwnProperty('a') == true) {
-
-            var list_a = attributes.a
-            var length_a = list_a.length
-    
-            for (let i = 0; i < length_a; i++) {
-                var a = document.createElementNS(svgNS, "a");
-                var list_a_object = list_a[i]
-                var length_a_object = list_a_object.length
-    
-                for (let i = 0; i < length_a_object; i++) {
-                    if (list_a_object[i].key === "content") {
-                        //NOTHING
-                        a.textContent = list_a_object[i].value;
-                    }
-                    else if (list_a_object[i].key === "parent") {
-                        console.log("PRINT PARENT ID")
-                        console.log(list_a_object[i].value)
-                        parent_element_a = document.getElementById(list_a_object[i].value);
-                        console.log("PRINT PARENT OBJECT")
-                        console.log(parent_element_a)
-                        console.log("PRINT ANCHOR OBJECT")
-                        console.log(a)
-                    }
-                    else if (list_a_object[i].key === "path_object" || list_a_object[i].key === "type") {
-                        //NOTHING
-                    }
-                    else {
-                        a.setAttributeNS(null, list_a_object[i].key, list_a_object[i].value);
-                    }
-                }
-    
-               parent_element_a.appendChild(a);
-               //GENERATE PATH AND ADD TO ANCHOR NOW
-
-               object_anchor_list = list_a_object.filter(item => item.key === "path_object");
-               object_anchor_list_length = object_anchor_list.length
-               if (object_anchor_list_length === 1) {
-                console.log("THIS IS THE OBJECT ANCHOR LIST")
-                console.log(object_anchor_list)
-                var path = document.createElementNS(svgNS, "path");
-                var list_path = object_anchor_list[0].value
-                var length_path = list_path.length
-                for (let i = 0; i < length_path; i++) {
-                    path.setAttributeNS(null, list_path[i].key, list_path[i].value);
-                }
-                a.appendChild(path);
-
-             }
-
-                
-            }
-        }
-    }
 };
 
 function joins(type, argument) {
