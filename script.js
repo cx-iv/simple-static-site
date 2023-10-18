@@ -460,73 +460,229 @@ function library(type) {
                 ],
                 g: [
                     { key: "stroke-dasharray", value: 1 },
+                    { key: "style", value: "cursor:pointer;" },
+                    { key: "class", value: "highlight-green" },
+                    { key: "id", value: "g_linkedin_button_background" },
                 ],
                 paths: [
+                    // THIS IS A BOX AROUND THE DETAIL FOR STYLING - FLIP IT ON TO ASSIST WITH EDITING
+                    // [
+                    //     {
+                    //         key: "d",
+                    //         value: "M0,0 L1200,0 L1200,1200 L0,1200 L0,0"
+                    //     },
+                    //     { key: "pathLength", value: 1 },
+                    //     { key: "id", value: "path_square" },
+                    //     { key: "stroke-width", value: "10" },
+                    //     { key: "stroke", value: "#ffffff" },
+                    // ],
                     [
                         {
                             key: "d",
-                            value: "M0,0 L1200,0 L1200,1200 L0,1200 L0,0"
+                            value: "M203.8,92.5h9.993v36.4h18.5v9.222H203.8Z"
                         },
                         { key: "pathLength", value: 1 },
-                        { key: "id", value: "path_square" },
-                        { key: "stroke-width", value: "10" },
+                        { key: "id", value: "path_L" },
+                        { key: "stroke-width", value: "0" },
+                        { key: "fill", value: "#ffffff" },
+                        { key: "transform", value: "translate(-600 500) scale(3)" },
                         { key: "stroke", value: "#ffffff" },
                     ],
-
+                    [
+                        {
+                            key: "d",
+                            value: "M322.443,105.384h9.6V136.3h-9.6Zm4.8-15.37a5.569,5.569,0,1,1-5.57,5.569,5.569,5.569,0,0,1,5.57-5.569"
+                        },
+                        { key: "pathLength", value: 1 },
+                        { key: "id", value: "path_i" },
+                        { key: "stroke-width", value: "0" },
+                        { key: "fill", value: "#ffffff" },
+                        { key: "transform", value: "translate(-858 505.5) scale(3)" },
+                        { key: "stroke", value: "#ffffff" },
+                    ],
+                    [
+                        {
+                            key: "d",
+                            value: "M379.2,144.337h9.219v4.225h.131a10.085,10.085,0,0,1,9.09-4.994c9.735,0,11.527,6.405,11.527,14.726v16.954h-9.6V160.217c0-3.588-.066-8.2-5-8.2-4.99,0-5.76,3.907-5.76,7.939v15.288h-9.6Z"
+                        },
+                        { key: "pathLength", value: 1 },
+                        { key: "id", value: "path_n" },
+                        { key: "stroke-width", value: "0" },
+                        { key: "fill", value: "#ffffff" },
+                        { key: "transform", value: "translate(-988 388.5) scale(3)" },
+                        { key: "stroke", value: "#ffffff" },
+                    ],
+                    [
+                        {
+                            key: "d",
+                            value: "M506.953,92.486h9.6v27.265l10.88-12.583h11.77l-12.6,14.313,12.335,16.63H526.872l-10.191-15.282h-.126v15.28h-9.6Z"
+                        },
+                        { key: "pathLength", value: 1 },
+                        { key: "id", value: "path_k" },
+                        { key: "stroke-width", value: "0" },
+                        { key: "fill", value: "#ffffff" },
+                        { key: "transform", value: "translate(-1270 500) scale(3)" },
+                        { key: "stroke", value: "#ffffff" },
+                    ],
+                    [
+                        {
+                            key: "d",
+                            value: "M639.93,155.719a5.756,5.756,0,0,0-5.894-5.89,6.406,6.406,0,0,0-6.784,5.89Zm8.132,13.7a16.909,16.909,0,0,1-13.128,6.151c-9.6,0-17.286-6.408-17.286-16.331s7.685-16.328,17.286-16.328c8.973,0,14.6,6.4,14.6,16.328v3.01H627.252a7.171,7.171,0,0,0,7.235,6.019,8.193,8.193,0,0,0,6.851-3.778Z"
+                        },
+                        { key: "pathLength", value: 1 },
+                        { key: "id", value: "path_e" },
+                        { key: "stroke-width", value: "0" },
+                        { key: "fill", value: "#ffffff" },
+                        { key: "transform", value: "translate(-1512 390) scale(3)" },
+                        { key: "stroke", value: "#ffffff" },
+                    ],
+                    [
+                        {
+                            key: "d",
+                            value: "M761.844,114.645c-4.8,0-7.68,3.205-7.68,7.875s2.879,7.878,7.68,7.878,7.687-3.2,7.687-7.878-2.881-7.875-7.687-7.875m16.525,23.437h-8.838v-4.1H769.4a12.071,12.071,0,0,1-9.544,4.868c-9.224,0-15.3-6.657-15.3-16.071,0-8.646,5.377-16.585,14.216-16.585,3.973,0,7.684,1.087,9.861,4.1h.126V92.473h9.609Z"
+                        },
+                        { key: "pathLength", value: 1 },
+                        { key: "id", value: "path_d" },
+                        { key: "stroke-width", value: "0" },
+                        { key: "fill", value: "#ffffff" },
+                        { key: "transform", value: "translate(-1788 500) scale(3)" },
+                        { key: "stroke", value: "#ffffff" },
+                    ],
                     [
                         {
                             key: "d",
                             value: "M958.98,112.559h-9.6V97.525c0-3.585-.064-8.2-4.993-8.2-5,0-5.765,3.906-5.765,7.939v15.294h-9.6V81.642h9.216v4.225h.129a10.1,10.1,0,0,1,9.093-4.994c9.73,0,11.524,6.4,11.524,14.726ZM918.19,77.416a5.571,5.571,0,1,1,5.57-5.572,5.571,5.571,0,0,1-5.57,5.572m4.8,35.143h-9.61V81.642h9.61Zm40.776-55.2h-55.21a4.728,4.728,0,0,0-4.781,4.67v55.439a4.731,4.731,0,0,0,4.781,4.675h55.21a4.741,4.741,0,0,0,4.8-4.675V62.025a4.738,4.738,0,0,0-4.8-4.67"
                         },
                         { key: "pathLength", value: 1 },
-                        { key: "id", value: "path_one" },
+                        { key: "id", value: "path_linkedin" },
                         { key: "stroke-width", value: "0" },
                         { key: "fill", value: "#ffffff" },
-                        { key: "transform", value: "translate(-2500 600) scale(3.5)" },
+                        { key: "transform", value: "translate(-2150 575) scale(3)" },
                         { key: "stroke", value: "#ffffff" },
                     ],
+                    [
+                        {
+                            key: "d",
+                            value: "M1165,274.515a1.2,1.2,0,0,0,1.21-1.269c0-.9-.543-1.33-1.657-1.33h-1.8v4.712h.677v-2.054h.832l.019.025,1.291,2.029h.724l-1.389-2.1Zm-.783-.472h-.785V272.45h.995c.514,0,1.1.084,1.1.757,0,.774-.593.836-1.314.836"
+                        },
+                        { key: "pathLength", value: 1 },
+                        { key: "id", value: "path_copyright_r" },
+                        { key: "stroke-width", value: "0" },
+                        { key: "fill", value: "#ffffff" },
+                        { key: "transform", value: "translate(-2725 80) scale(3)" },
+                        { key: "stroke", value: "#ffffff" },
+                    ],
+
+
                 ],
                 text: [
                     [
                         { key: "x", value: "10" },
-                        { key: "y", value: "100" },
-                        { key: "font-size", value: "125" },
+                        { key: "y", value: "120" },
+                        { key: "font-size", value: "120" },
                         { key: "fill", value: "#ffffff" },
                         { key: "font-family", value: "sans-serif" },
+                        { key: "font-weight", value: "bold" },
                         { key: "content", value: "diopside is a project" },
                     ],
                     [
-                        { key: "x", value: "10" },
-                        { key: "y", value: "225" },
-                        { key: "font-size", value: "50" },
+                        { key: "x", value: "242" },
+                        { key: "y", value: "280" },
+                        { key: "font-size", value: "59" },
                         { key: "fill", value: "#ffffff" },
                         { key: "font-family", value: "sans-serif" },
-                        { key: "content", value: "diopside is a mineral, and diopsi.de conforms" },
+                        { key: "content", value: "is a mineral, and diopsi.de conforms" },
                     ],
                     [
                         { key: "x", value: "10" },
-                        { key: "y", value: "275" },
-                        { key: "font-size", value: "50" },
+                        { key: "y", value: "340" },
+                        { key: "font-size", value: "59" },
                         { key: "fill", value: "#ffffff" },
                         { key: "font-family", value: "sans-serif" },
-                        { key: "content", value: "with the affordable TLD (.de)" },
+                        { key: "content", value: "with an affordable top-level domain (.de)" },
                     ],
+                    [
+                        { key: "x", value: "10" },
+                        { key: "y", value: "480" },
+                        { key: "font-size", value: "59" },
+                        { key: "fill", value: "#ffffff" },
+                        { key: "font-family", value: "sans-serif" },
+                        { key: "content", value: "this site can be run for pennies a month," },
+                    ],
+                    [
+                        { key: "x", value: "180" },
+                        { key: "y", value: "540" },
+                        { key: "font-size", value: "59" },
+                        { key: "fill", value: "#ffffff" },
+                        { key: "font-family", value: "sans-serif" },
+                        { key: "content", value: " ; we can show you how" },
+                    ],
+                    [
+                        { key: "x", value: "10" },
+                        { key: "y", value: "730" },
+                        { key: "font-size", value: "100" },
+                        { key: "fill", value: "#ffffff" },
+                        { key: "font-family", value: "sans-serif" },
+                        { key: "font-weight", value: "bold" },
+                        { key: "content", value: "say hello on:" },
+                    ],
+                    [
+                        { key: "id", value: "diopside_mineral_wikipedia" },
+                        { key: "x", value: "10" },
+                        { key: "y", value: "280" },
+                        { key: "font-size", value: "59" },
+                        { key: "font-family", value: "sans-serif" },
+                    ],
+                    [
+                        { key: "id", value: "site_github" },
+                        { key: "x", value: "10" },
+                        { key: "y", value: "540" },
+                        { key: "font-size", value: "59" },
+                        { key: "fill", value: "#ffffff" },
+                        { key: "font-family", value: "sans-serif" },
+                    ],
+                ],
+                a: [
+                    [
+                    { key: "type", value: "text" },
+                    { key: "parent", value: "diopside_mineral_wikipedia" },
+                    { key: "href", value: "https://en.wikipedia.org/wiki/Diopside" },
+                    { key: "class", value: "highlight-green" },
+                    { key: "fill", value: "#ffffff" },
+                    { key: "text-decoration", value: "underline" },
+                    { key: "target", value: "_blank" },
+                    { key: "content", value: "diopside" },
+                ],
+                [
+                    { key: "type", value: "text" },
+                    { key: "parent", value: "site_github" },
+                    { key: "href", value: "https://github.com/cx-iv/simple-static-site" },
+                    { key: "class", value: "highlight-green" },
+                    { key: "fill", value: "#ffffff" },
+                    { key: "text-decoration", value: "underline" },
+                    { key: "target", value: "_blank" },
+                    { key: "content", value: "steal it" },
+                ],
+                [
+                    { key: "type", value: "object" },
+                    { key: "parent", value: "g_linkedin_button_background" },
+                    { key: "href", value: "https://www.linkedin.com/in/cxiv/" },
+                    { key: "id", value: "anchor_linkedin_button_background" },
+                    { key: "class", value: "highlight-green" },
+                    { key: "fill", value: "rgba(255, 255, 255, 0)" },
+                    { key: "target", value: "_blank" },
+                    { key: "path_object", value: [
+                        {
+                            key: "d",
+                            value: "M0,730 L780,730 L780,950 L0,950 L0,730"
+                        },
+                        { key: "pathLength", value: 1 },
+                        { key: "stroke-width", value: "0" },
+                        { key: "stroke", value: "#ffffff" },
+                    ],
+ },
+                ],
 
-                    // [
-                    //     { key: "x", value: "10" },
-                    //     { key: "y", value: "120" },
-                    //     { key: "font-size", value: "50" },
-                    //     { key: "fill", value: "#ffffff" },
-                    //     { key: "font-family", value: "sans-serif" },
-                    //     { key: "content", value: [
-                    //         [
-                    //             {key:"href",value:"https://github.com/cx-iv/simple-static-site"},
-                    //             {key:"class",value:"highlight-green"},
-                    //             {key:"target",value:"_blank"},
-                    //             {key:"content",value:"THISSHOULDBECLICKABLE"},
-                    //         ],
-                    //     ] },
-                    // ]
 
                 ],
             }
@@ -549,8 +705,11 @@ function library(type) {
                 ],
                 g: [
                     { key: "stroke-dasharray", value: 1 },
+                    { key: "style", value: "cursor:pointer;" },
+                    { key: "class", value: "highlight-green" },
                 ],
                 paths: [
+                    // THIS IS A BOX AROUND THE DETAIL FOR STYLING - FLIP IT ON TO ASSIST WITH EDITING
                     [
                         {
                             key: "d",
@@ -565,12 +724,91 @@ function library(type) {
                 text: [
                     [
                         { key: "x", value: "10" },
-                        { key: "y", value: "60" },
-                        { key: "font-size", value: "50" },
+                        { key: "y", value: "120" },
+                        { key: "font-size", value: "120" },
                         { key: "fill", value: "#ffffff" },
                         { key: "font-family", value: "sans-serif" },
-                        { key: "content", value: "RESOURCESRESOURCESRESOURCESRESOUR" },
-                    ]
+                        { key: "font-weight", value: "bold" },
+                        { key: "content", value: "TOOLS WE USE" },
+                    ],
+                    [
+                        { key: "x", value: "242" },
+                        { key: "y", value: "280" },
+                        { key: "font-size", value: "59" },
+                        { key: "fill", value: "#ffffff" },
+                        { key: "font-family", value: "sans-serif" },
+                        { key: "content", value: "RESOURCES" },
+                    ],
+                    [
+                        { key: "x", value: "10" },
+                        { key: "y", value: "340" },
+                        { key: "font-size", value: "59" },
+                        { key: "fill", value: "#ffffff" },
+                        { key: "font-family", value: "sans-serif" },
+                        { key: "content", value: "with an affordable top-level domain (.de)" },
+                    ],
+                    [
+                        { key: "x", value: "10" },
+                        { key: "y", value: "480" },
+                        { key: "font-size", value: "59" },
+                        { key: "fill", value: "#ffffff" },
+                        { key: "font-family", value: "sans-serif" },
+                        { key: "content", value: "this site can be run for pennies a month," },
+                    ],
+                    [
+                        { key: "x", value: "180" },
+                        { key: "y", value: "540" },
+                        { key: "font-size", value: "59" },
+                        { key: "fill", value: "#ffffff" },
+                        { key: "font-family", value: "sans-serif" },
+                        { key: "content", value: " ; we can show you how" },
+                    ],
+                    [
+                        { key: "x", value: "10" },
+                        { key: "y", value: "730" },
+                        { key: "font-size", value: "100" },
+                        { key: "fill", value: "#ffffff" },
+                        { key: "font-family", value: "sans-serif" },
+                        { key: "font-weight", value: "bold" },
+                        { key: "content", value: "say hello on:" },
+                    ],
+                    [
+                        { key: "id", value: "diopside_mineral_wikipedia" },
+                        { key: "x", value: "10" },
+                        { key: "y", value: "280" },
+                        { key: "font-size", value: "59" },
+                        { key: "font-family", value: "sans-serif" },
+                    ],
+                    [
+                        { key: "id", value: "site_github" },
+                        { key: "x", value: "10" },
+                        { key: "y", value: "540" },
+                        { key: "font-size", value: "59" },
+                        { key: "fill", value: "#ffffff" },
+                        { key: "font-family", value: "sans-serif" },
+                    ],
+                ],
+                a: [
+                    [
+                    { key: "type", value: "text" },
+                    { key: "parent", value: "diopside_mineral_wikipedia" },
+                    { key: "href", value: "https://en.wikipedia.org/wiki/Diopside" },
+                    { key: "class", value: "highlight-green" },
+                    { key: "fill", value: "#ffffff" },
+                    { key: "text-decoration", value: "underline" },
+                    { key: "target", value: "_blank" },
+                    { key: "content", value: "diopside" },
+                ],
+                [
+                    { key: "type", value: "text" },
+                    { key: "parent", value: "site_github" },
+                    { key: "href", value: "https://github.com/cx-iv/simple-static-site" },
+                    { key: "class", value: "highlight-green" },
+                    { key: "fill", value: "#ffffff" },
+                    { key: "text-decoration", value: "underline" },
+                    { key: "target", value: "_blank" },
+                    { key: "content", value: "steal it" },
+                ],
                 ],
             }
         },
@@ -666,6 +904,7 @@ function generate_component(component) {
                 var text = document.createElementNS(svgNS, "text");
                 var list_text_object = list_text[i]
                 var length_text_object = list_text_object.length
+
                 for (let i = 0; i < length_text_object; i++) {
                     if (list_text_object[i].key === "content") {
                         //NOTHING
@@ -676,12 +915,9 @@ function generate_component(component) {
                     }
                 }
                 svg_app_icon.appendChild(text);
+                
             }
         }
-
-        // END VARIABLE ATTRIBUTES
-
-
     }
 
 
@@ -689,7 +925,67 @@ function generate_component(component) {
         document.body.appendChild(div);
     }
     else {
+        console.log("PARENT ELEMENT WORKING")
+        console.log(parent_element)
         parent_element.appendChild(div);
+    }
+
+    //ANCHORS ADDED AFTER GENERATION
+    if (component.hasOwnProperty('attributes') == true) {
+        var attributes = component.attributes
+        if (attributes.hasOwnProperty('a') == true) {
+
+            var list_a = attributes.a
+            var length_a = list_a.length
+    
+            for (let i = 0; i < length_a; i++) {
+                var a = document.createElementNS(svgNS, "a");
+                var list_a_object = list_a[i]
+                var length_a_object = list_a_object.length
+    
+                for (let i = 0; i < length_a_object; i++) {
+                    if (list_a_object[i].key === "content") {
+                        //NOTHING
+                        a.textContent = list_a_object[i].value;
+                    }
+                    else if (list_a_object[i].key === "parent") {
+                        console.log("PRINT PARENT ID")
+                        console.log(list_a_object[i].value)
+                        parent_element_a = document.getElementById(list_a_object[i].value);
+                        console.log("PRINT PARENT OBJECT")
+                        console.log(parent_element_a)
+                        console.log("PRINT ANCHOR OBJECT")
+                        console.log(a)
+                    }
+                    else if (list_a_object[i].key === "path_object" || list_a_object[i].key === "type") {
+                        //NOTHING
+                    }
+                    else {
+                        a.setAttributeNS(null, list_a_object[i].key, list_a_object[i].value);
+                    }
+                }
+    
+               parent_element_a.appendChild(a);
+               //GENERATE PATH AND ADD TO ANCHOR NOW
+
+               object_anchor_list = list_a_object.filter(item => item.key === "path_object");
+               object_anchor_list_length = object_anchor_list.length
+               if (object_anchor_list_length === 1) {
+                console.log("THIS IS THE OBJECT ANCHOR LIST")
+                console.log(object_anchor_list)
+                var path = document.createElementNS(svgNS, "path");
+                var list_path = object_anchor_list[0].value
+                var length_path = list_path.length
+                for (let i = 0; i < length_path; i++) {
+                    path.setAttributeNS(null, list_path[i].key, list_path[i].value);
+                }
+                a.appendChild(path);
+
+             }
+
+                
+            }
+        }
     }
 };
 
