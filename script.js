@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', (event) => { event_handler("genesi
 
 document.addEventListener("animationend", (event) => {
     //captures animation events
-    if (event.animationName === "fillWhiteToBlack") {
+    if (event.animationName === "fillBlack") {
         event_handler("select_generated");
     }
     else if (event.animationName === "rotateGenesisSelectExit" && ENV.event === "click_about") {
@@ -486,7 +486,7 @@ function library(type) {
                         { key: "parent", value: "anchor_linkedin_button" },
                         { key: "stroke-width", value: "0" },
                         { key: "fill", value: "#ffffff" },
-                        { key: "transform", value: "translate(-600 500) scale(3)" },
+                        { key: "transform", value: "translate(-600 750) scale(3)" },
                         { key: "stroke", value: "#ffffff" },
                     ],
                     [
@@ -499,7 +499,7 @@ function library(type) {
                         { key: "parent", value: "anchor_linkedin_button" },
                         { key: "stroke-width", value: "0" },
                         { key: "fill", value: "#ffffff" },
-                        { key: "transform", value: "translate(-858 505.5) scale(3)" },
+                        { key: "transform", value: "translate(-858 755.5) scale(3)" },
                         { key: "stroke", value: "#ffffff" },
                     ],
                     [
@@ -512,7 +512,7 @@ function library(type) {
                         { key: "id", value: "path_n" },
                         { key: "stroke-width", value: "0" },
                         { key: "fill", value: "#ffffff" },
-                        { key: "transform", value: "translate(-988 388.5) scale(3)" },
+                        { key: "transform", value: "translate(-988 638.5) scale(3)" },
                         { key: "stroke", value: "#ffffff" },
                     ],
                     [
@@ -525,7 +525,7 @@ function library(type) {
                         { key: "id", value: "path_k" },
                         { key: "stroke-width", value: "0" },
                         { key: "fill", value: "#ffffff" },
-                        { key: "transform", value: "translate(-1270 500) scale(3)" },
+                        { key: "transform", value: "translate(-1270 750) scale(3)" },
                         { key: "stroke", value: "#ffffff" },
                     ],
                     [
@@ -538,7 +538,7 @@ function library(type) {
                         { key: "id", value: "path_e" },
                         { key: "stroke-width", value: "0" },
                         { key: "fill", value: "#ffffff" },
-                        { key: "transform", value: "translate(-1512 390) scale(3)" },
+                        { key: "transform", value: "translate(-1512 640) scale(3)" },
                         { key: "stroke", value: "#ffffff" },
                     ],
                     [
@@ -551,7 +551,7 @@ function library(type) {
                         { key: "parent", value: "anchor_linkedin_button" },
                         { key: "stroke-width", value: "0" },
                         { key: "fill", value: "#ffffff" },
-                        { key: "transform", value: "translate(-1788 500) scale(3)" },
+                        { key: "transform", value: "translate(-1788 750) scale(3)" },
                         { key: "stroke", value: "#ffffff" },
                     ],
                     [
@@ -564,7 +564,7 @@ function library(type) {
                         { key: "id", value: "path_linkedin" },
                         { key: "stroke-width", value: "0" },
                         { key: "fill", value: "#ffffff" },
-                        { key: "transform", value: "translate(-2150 575) scale(3)" },
+                        { key: "transform", value: "translate(-2150 825) scale(3)" },
                         { key: "stroke", value: "#ffffff" },
                     ],
                     [
@@ -577,15 +577,17 @@ function library(type) {
                         { key: "id", value: "path_copyright_r" },
                         { key: "stroke-width", value: "0" },
                         { key: "fill", value: "#ffffff" },
-                        { key: "transform", value: "translate(-2725 80) scale(3)" },
+                        { key: "transform", value: "translate(-2725 330) scale(3)" },
                         { key: "stroke", value: "#ffffff" },
                     ],
                     [
+                        //THIS THING TIES THE LETTERS TOGETHER TO PREVENT THAT ANNOYTING THING
                         {
                             key: "d",
-                            value: "M0,730 L780,730 L780,950 L0,950 L0,730"
+                            value: "M0,980 L780,980 L780,1200 L0,1200 L0,980"
                         },
                         { key: "parent", value: "anchor_linkedin_button" },
+                        { key: "id", value: "background_for_linkedin_to_tie_letters_together" },
                         { key: "pathLength", value: 1 },
                         { key: "stroke-width", value: "0" },
                         { key: "stroke", value: "#ffffff" },
@@ -598,63 +600,63 @@ function library(type) {
                     [
                         { key: "x", value: "10" },
                         { key: "y", value: "120" },
-                        { key: "font-size", value: "120" },
+                        { key: "font-size", value: "122" },
                         { key: "fill", value: "#ffffff" },
                         { key: "font-family", value: "sans-serif" },
                         { key: "font-weight", value: "bold" },
                         { key: "content", value: "diopside is a project" },
                     ],
                     [
-                        { key: "x", value: "190" },
-                        { key: "y", value: "210" },
-                        { key: "font-size", value: "45" },
+                        { key: "x", value: "242" },
+                        { key: "y", value: "220" },
+                        { key: "font-size", value: "58" },
                         { key: "fill", value: "#ffffff" },
                         { key: "font-family", value: "sans-serif" },
                         { key: "font-weight", value: "lighter" },
-                        { key: "content", value: "is a mineral, and diopsi.de conforms with an" },
+                        { key: "content", value: "is a mineral, and diopsi.de conforms" },
                     ],
                     [
                         { key: "x", value: "10" },
-                        { key: "y", value: "270" },
-                        { key: "font-size", value: "45" },
+                        { key: "y", value: "280" },
+                        { key: "font-size", value: "58" },
                         { key: "fill", value: "#ffffff" },
                         { key: "font-family", value: "sans-serif" },
                         { key: "font-weight", value: "lighter" },
-                        { key: "content", value: "affordable top-level domain (.de)" },
+                        { key: "content", value: "with an affordable top-level domain (.de)" },
                     ],
                     [
                         { key: "x", value: "10" },
-                        { key: "y", value: "450" },
-                        { key: "font-size", value: "65" },
+                        { key: "y", value: "520" },
+                        { key: "font-size", value: "105" },
                         { key: "fill", value: "#ffffff" },
                         { key: "font-family", value: "sans-serif" },
                         { key: "font-weight", value: "lighter" },
-                        { key: "content", value: "this site can be run for pennies a month," },
-                    ],
-                    [
-                        { key: "x", value: "220" },
-                        { key: "y", value: "515" },
-                        { key: "font-size", value: "65" },
-                        { key: "fill", value: "#ffffff" },
-                        { key: "font-family", value: "sans-serif" },
-                        { key: "font-weight", value: "lighter" },
-                        { key: "content", value: " ; we can show you how" },
+                        { key: "content", value: "this site runs for pennies" },
                     ],
                     [
                         { key: "x", value: "10" },
-                        { key: "y", value: "730" },
-                        { key: "font-size", value: "100" },
+                        { key: "y", value: "640" },
+                        { key: "font-size", value: "105" },
                         { key: "fill", value: "#ffffff" },
                         { key: "font-family", value: "sans-serif" },
                         { key: "font-weight", value: "lighter" },
-                        { key: "content", value: "say hello on:" },
+                        { key: "content", value: "a month;" },
+                    ],
+                    [
+                        { key: "x", value: "10" },
+                        { key: "y", value: "950" },
+                        { key: "font-size", value: "90" },
+                        { key: "fill", value: "#ffffff" },
+                        { key: "font-family", value: "sans-serif" },
+                        { key: "font-weight", value: "lighter" },
+                        { key: "content", value: "we can show you how:" },
                     ],
                     [
                         { key: "id", value: "diopside_mineral_wikipedia" },
                         { key: "parent", value: "anchor_diopside_mineral_wikipedia" },
                         { key: "x", value: "10" },
-                        { key: "y", value: "210" },
-                        { key: "font-size", value: "45" },
+                        { key: "y", value: "220" },
+                        { key: "font-size", value: "58" },
                         { key: "font-family", value: "sans-serif" },
                         { key: "content", value: "diopside" },
                         { key: "fill", value: "#ffffff" },
@@ -664,9 +666,9 @@ function library(type) {
                     [
                         { key: "id", value: "site_github" },
                         { key: "parent", value: "anchor_site_github" },
-                        { key: "x", value: "10" },
-                        { key: "y", value: "515" },
-                        { key: "font-size", value: "65" },
+                        { key: "x", value: "432" },
+                        { key: "y", value: "640" },
+                        { key: "font-size", value: "110" },
                         { key: "fill", value: "#ffffff" },
                         { key: "font-family", value: "sans-serif" },
                         { key: "text-decoration", value: "underline" },
@@ -735,17 +737,8 @@ function library(type) {
                 text: [
                     [
                         { key: "x", value: "10" },
-                        { key: "y", value: "120" },
-                        { key: "font-size", value: "120" },
-                        { key: "fill", value: "#ffffff" },
-                        { key: "font-family", value: "sans-serif" },
-                        { key: "font-weight", value: "bold" },
-                        { key: "content", value: "tools + resources to:" },
-                    ],
-                    [
-                        { key: "x", value: "10" },
-                        { key: "y", value: "240" },
-                        { key: "font-size", value: "60" },
+                        { key: "y", value: "80" },
+                        { key: "font-size", value: "80" },
                         { key: "font-weight", value: "bold" },
                         { key: "fill", value: "#ffffff" },
                         { key: "font-family", value: "sans-serif" },
@@ -755,7 +748,7 @@ function library(type) {
                         { key: "id", value: "resource_S3" },
                         { key: "parent", value: "anchor_resource_S3" },
                         { key: "x", value: "10" },
-                        { key: "y", value: "335" },
+                        { key: "y", value: "185" },
                         { key: "font-size", value: "100" },
                         { key: "font-weight", value: "lighter" },
                         { key: "font-family", value: "sans-serif" },
@@ -768,7 +761,7 @@ function library(type) {
                         { key: "id", value: "resource_blob" },
                         { key: "parent", value: "anchor_blob" },
                         { key: "x", value: "180" },
-                        { key: "y", value: "335" },
+                        { key: "y", value: "185" },
                         { key: "font-size", value: "100" },
                         { key: "font-weight", value: "lighter" },
                         { key: "font-family", value: "sans-serif" },
@@ -781,7 +774,7 @@ function library(type) {
                         { key: "id", value: "resource_cloudflare" },
                         { key: "parent", value: "anchor_cloudflare" },
                         { key: "x", value: "430" },
-                        { key: "y", value: "335" },
+                        { key: "y", value: "185" },
                         { key: "font-size", value: "100" },
                         { key: "font-weight", value: "lighter" },
                         { key: "font-family", value: "sans-serif" },
@@ -792,18 +785,18 @@ function library(type) {
                     ],
                     [
                         { key: "x", value: "10" },
-                        { key: "y", value: "470" },
-                        { key: "font-size", value: "60" },
+                        { key: "y", value: "370" },
+                        { key: "font-size", value: "80" },
                         { key: "font-weight", value: "bold" },
                         { key: "fill", value: "#ffffff" },
                         { key: "font-family", value: "sans-serif" },
-                        { key: "content", value: "manage information + automate work:" },
+                        { key: "content", value: "manage data + automate work:" },
                     ],
                     [
                         
                         { key: "parent", value: "anchor_baserow" },
                         { key: "x", value: "10" },
-                        { key: "y", value: "565" },
+                        { key: "y", value: "475" },
                         { key: "font-size", value: "100" },
                         { key: "font-weight", value: "lighter" },
                         { key: "fill", value: "#ffffff" },
@@ -815,7 +808,7 @@ function library(type) {
                     [
                         
                         { key: "x", value: "410" },
-                        { key: "y", value: "565" },
+                        { key: "y", value: "475" },
                         { key: "font-size", value: "100" },
                         { key: "font-weight", value: "lighter" },
                         { key: "fill", value: "#ffffff" },
@@ -826,7 +819,7 @@ function library(type) {
                         
                         { key: "parent", value: "anchor_make" },
                         { key: "x", value: "510" },
-                        { key: "y", value: "565" },
+                        { key: "y", value: "475" },
                         { key: "font-size", value: "100" },
                         { key: "font-weight", value: "lighter" },
                         { key: "fill", value: "#ffffff" },
@@ -837,8 +830,8 @@ function library(type) {
                     ],
                     [
                         { key: "x", value: "10" },
-                        { key: "y", value: "700" },
-                        { key: "font-size", value: "60" },
+                        { key: "y", value: "660" },
+                        { key: "font-size", value: "80" },
                         { key: "font-weight", value: "bold" },
                         { key: "fill", value: "#ffffff" },
                         { key: "font-family", value: "sans-serif" },
@@ -847,7 +840,7 @@ function library(type) {
                     [
                         { key: "parent", value: "anchor_unqork" },
                         { key: "x", value: "10" },
-                        { key: "y", value: "795" },
+                        { key: "y", value: "765" },
                         { key: "font-size", value: "100" },
                         { key: "font-weight", value: "lighter" },
                         { key: "fill", value: "#ffffff" },
@@ -859,7 +852,7 @@ function library(type) {
                     [
                         { key: "parent", value: "anchor_dealcloud" },
                         { key: "x", value: "390" },
-                        { key: "y", value: "795" },
+                        { key: "y", value: "765" },
                         { key: "font-size", value: "100" },
                         { key: "font-weight", value: "lighter" },
                         { key: "fill", value: "#ffffff" },
@@ -870,8 +863,8 @@ function library(type) {
                     ],
                     [
                         { key: "x", value: "10" },
-                        { key: "y", value: "930" },
-                        { key: "font-size", value: "60" },
+                        { key: "y", value: "950" },
+                        { key: "font-size", value: "80" },
                         { key: "font-weight", value: "bold" },
                         { key: "fill", value: "#ffffff" },
                         { key: "font-family", value: "sans-serif" },
@@ -880,7 +873,7 @@ function library(type) {
                     [
                         { key: "parent", value: "anchor_manna" },
                         { key: "x", value: "10" },
-                        { key: "y", value: "1025" },
+                        { key: "y", value: "1055" },
                         { key: "font-size", value: "100" },
                         { key: "font-weight", value: "lighter" },
                         { key: "fill", value: "#ffffff" },
@@ -892,7 +885,7 @@ function library(type) {
                     [
                         { key: "parent", value: "anchor_road_not_taken" },
                         { key: "x", value: "370" },
-                        { key: "y", value: "1025" },
+                        { key: "y", value: "1055" },
                         { key: "font-size", value: "100" },
                         { key: "font-weight", value: "lighter" },
                         { key: "fill", value: "#ffffff" },

@@ -53,8 +53,8 @@ body {
 
 
 .genesis-accent-select {
-  fill:#ffffff;
-  animation: draw 0.9s, fillWhiteToBlack 0.5s 0.8s forwards;
+  fill:none;
+  animation: draw 1s, fillBlack 0.5s 0.7s forwards;
 }
 
 .genesis-ghost-accent-select {
@@ -67,13 +67,7 @@ body {
   animation: draw 0.9s forwards, expandFillPageGhost 1s 0.9s forwards;
 }
 
-
-.genesis-ghost-select {
-  fill:#ffffff;
-  animation: draw 0.9s;
-}
-
-@keyframes fillWhiteToBlack {
+@keyframes fillBlack {
   0% {
     fill: #ffffff;
   }
@@ -102,16 +96,6 @@ body {
 @keyframes exitClickRotate {
   100% {
     transform: rotate(-90deg);
-  }
-}
-
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
   }
 }
 
@@ -190,43 +174,6 @@ body {
   }
 }
 
-.fill-white {
-  fill:#000000;
-  animation: blackToWhite 1s forwards;
-  animation-delay: 0.65s;
-}
-
-@keyframes blackToWhite {
-  100% {
-    fill: #ffffff;
-  }
-}
-
-
-.click-contract {
-  animation: contractAnimation 0.15s;
-}
-
-
-@keyframes contractToNormal {
-  100% {
-    transform: translate(-50%, -50%) scale(1);
-  }
-}
-
-
-@keyframes blackToGrey {
-  0% {
-    fill: #000000;
-  }
-  100% {
-    fill: #7D7D7D;
-  }
-}
-
-
-
-
 .select-resources {
   position: absolute;
   top: 50%;
@@ -263,22 +210,9 @@ body {
   pointer-events:none
 }
 
-.fade-display {
-  animation: fadeIn 3s;
-}
-
 .fade-hide {
   z-index: -3;
   animation: fadeOut 0.5s forwards;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
 }
 
 @keyframes fadeOut {
